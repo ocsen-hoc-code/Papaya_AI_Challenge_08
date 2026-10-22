@@ -178,10 +178,12 @@ class ExtractionResult(BaseModel):
     confidence: float = Field(ge=0.0, le=1.0)
     fields: dict[str, FieldValue] = Field(default_factory=dict)
     validation_errors: list[ValidationIssue] = Field(default_factory=list)
-    # Diagnostics (source file, backend, timings). Not part of the spec format.
+    # Diagnostics (source file, backend, timings, grounding). Not part of the spec format,
+    # so it is left out of the JSON output unless explicitly requested.
     meta: dict[str, Any] | None = None
 
-    def to_json_dict(self, include_meta: bool = True) -> dict[str, Any]:
+    def to_json_dict(self, include_meta: bool = False) -> dict[str, Any]:
+        """JSON-ready dict in the spec format; ``include_meta=True`` adds the diagnostic block."""
         data = self.model_dump(mode="json")
         if not include_meta or self.meta is None:
             data.pop("meta", None)

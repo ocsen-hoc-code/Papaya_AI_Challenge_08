@@ -12,8 +12,11 @@ to decide as possible and moves every decision that code can make out of the pro
 | Extract | page at 1600 px (~1800 tokens) | `{"fields": {name: {"value", "confidence", "evidence"}}}` | One prompt per type with only that type's fields, so the model never mixes schemas. |
 
 Classification asks for a **score for every type** instead of one label. The smoke test showed why: asked for a single
-label, the model answered with the printed title ("OFFICIAL RECEIPT"). Scores turn into the classification
-confidence in code: `p1 × (0.5 + 0.5 × (p1 − p2))`, so a near tie gives a low confidence even when the top score is high.
+label, the model answered with the printed title ("OFFICIAL RECEIPT"). Scores turn into a classifier confidence in
+code: `p1 × (0.5 + 0.5 × (p1 − p2))`, so a near tie gives a low confidence even when the top score is high. On clear
+documents the model is near-certain (1.0), so the final document confidence is also checked against the content:
+`classifier × (0.5 + 0.5 × support)`, where `support` is the mean confidence of the type's key fields (e.g. `items` and
+`grand_total` for a receipt). A "receipt" with no line items or total is not believable, whatever the classifier said.
 The prompt defines each type by purpose and lists the cues that tell them apart. It also says a document can mention
 medicines or prices without being a prescription or a receipt; discharge summaries often list discharge medication.
 

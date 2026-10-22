@@ -1,6 +1,6 @@
 {
   "document_type": "lab_report",
-  "confidence": 1.0,
+  "confidence": 0.92,
   "fields": {
     "lab_name": {
       "value": "Sunrise Diagnostics Laboratory",
@@ -18,7 +18,7 @@
       "value": [
         {
           "test_name": "Fasting Plasma Glucose",
-          "result": "7.8",
+          "result": 7.8,
           "unit": "mmol/L",
           "reference_range": "3.9 - 5.5",
           "flag": "high",
@@ -26,7 +26,7 @@
         },
         {
           "test_name": "HbA1c",
-          "result": "7.2",
+          "result": 7.2,
           "unit": "%",
           "reference_range": "4.0 - 5.6",
           "flag": "high",
@@ -34,7 +34,7 @@
         },
         {
           "test_name": "Total Cholesterol",
-          "result": "6.4",
+          "result": 6.4,
           "unit": "mmol/L",
           "reference_range": "< 5.2",
           "flag": "high",
@@ -42,7 +42,7 @@
         },
         {
           "test_name": "LDL Cholesterol",
-          "result": "4.1",
+          "result": 4.1,
           "unit": "mmol/L",
           "reference_range": "< 3.4",
           "flag": "high",
@@ -50,7 +50,7 @@
         },
         {
           "test_name": "HDL Cholesterol",
-          "result": "1.2",
+          "result": 1.2,
           "unit": "mmol/L",
           "reference_range": "> 1.0",
           "flag": "normal",
@@ -58,7 +58,7 @@
         },
         {
           "test_name": "Triglycerides",
-          "result": "1.6",
+          "result": 1.6,
           "unit": "mmol/L",
           "reference_range": "< 1.7",
           "flag": "normal",
@@ -66,7 +66,7 @@
         },
         {
           "test_name": "Creatinine",
-          "result": "68",
+          "result": 68.0,
           "unit": "µmol/L",
           "reference_range": "45 - 90",
           "flag": "normal",
@@ -74,7 +74,7 @@
         },
         {
           "test_name": "Haemoglobin",
-          "result": "11.2",
+          "result": 11.2,
           "unit": "g/dL",
           "reference_range": "12.0 - 15.5",
           "flag": "low",
@@ -84,35 +84,5 @@
       "confidence": 0.84
     }
   },
-  "validation_errors": [],
-  "meta": {
-    "source": "07_lab_report_en.pdf",
-    "backend": "mlx",
-    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
-    "pages": 1,
-    "has_text_layer": true,
-    "classification_scores": {
-      "receipt": 0.0,
-      "discharge_summary": 0.0,
-      "lab_report": 0.98,
-      "prescription": 0.0
-    },
-    "language": "en",
-    "classify_attempts": 1,
-    "extract_attempts": 1,
-    "generated_tokens": 470,
-    "grounding": {
-      "lab_name": "exact",
-      "patient_name": "exact",
-      "date": "exact",
-      "tests": "exact"
-    },
-    "timings": {
-      "ingest_s": 0.13,
-      "classify_s": 63.28,
-      "extract_s": 111.88,
-      "postprocess_s": 0.005,
-      "total_s": 175.29
-    }
-  }
+  "validation_errors": []
 }

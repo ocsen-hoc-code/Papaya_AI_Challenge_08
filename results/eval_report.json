@@ -22,70 +22,70 @@
       "truth_type": "receipt",
       "predicted_type": "receipt",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.953
     },
     {
       "source": "02_receipt_vi.pdf",
       "truth_type": "receipt",
       "predicted_type": "receipt",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.955
     },
     {
       "source": "03_receipt_th.pdf",
       "truth_type": "receipt",
       "predicted_type": "receipt",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.953
     },
     {
       "source": "04_discharge_summary_en.pdf",
       "truth_type": "discharge_summary",
       "predicted_type": "discharge_summary",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.963
     },
     {
       "source": "05_discharge_summary_vi.pdf",
       "truth_type": "discharge_summary",
       "predicted_type": "discharge_summary",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.963
     },
     {
       "source": "06_discharge_summary_th.png",
       "truth_type": "discharge_summary",
       "predicted_type": "discharge_summary",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.823
     },
     {
       "source": "07_lab_report_en.pdf",
       "truth_type": "lab_report",
       "predicted_type": "lab_report",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.92
     },
     {
       "source": "08_lab_report_vi.jpg",
       "truth_type": "lab_report",
       "predicted_type": "lab_report",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.745
     },
     {
       "source": "09_prescription_en.pdf",
       "truth_type": "prescription",
       "predicted_type": "prescription",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.92
     },
     {
       "source": "10_prescription_vi.png",
       "truth_type": "prescription",
       "predicted_type": "prescription",
       "type_correct": true,
-      "type_confidence": 1.0
+      "type_confidence": 0.745
     }
   ],
   "fields": [
@@ -840,7 +840,7 @@
       "predicted": [
         {
           "test_name": "Fasting Plasma Glucose",
-          "result": "7.8",
+          "result": 7.8,
           "unit": "mmol/L",
           "reference_range": "3.9 - 5.5",
           "flag": "high",
@@ -848,7 +848,7 @@
         },
         {
           "test_name": "HbA1c",
-          "result": "7.2",
+          "result": 7.2,
           "unit": "%",
           "reference_range": "4.0 - 5.6",
           "flag": "high",
@@ -856,7 +856,7 @@
         },
         {
           "test_name": "Total Cholesterol",
-          "result": "6.4",
+          "result": 6.4,
           "unit": "mmol/L",
           "reference_range": "< 5.2",
           "flag": "high",
@@ -864,7 +864,7 @@
         },
         {
           "test_name": "LDL Cholesterol",
-          "result": "4.1",
+          "result": 4.1,
           "unit": "mmol/L",
           "reference_range": "< 3.4",
           "flag": "high",
@@ -872,7 +872,7 @@
         },
         {
           "test_name": "HDL Cholesterol",
-          "result": "1.2",
+          "result": 1.2,
           "unit": "mmol/L",
           "reference_range": "> 1.0",
           "flag": "normal",
@@ -880,7 +880,7 @@
         },
         {
           "test_name": "Triglycerides",
-          "result": "1.6",
+          "result": 1.6,
           "unit": "mmol/L",
           "reference_range": "< 1.7",
           "flag": "normal",
@@ -888,7 +888,7 @@
         },
         {
           "test_name": "Creatinine",
-          "result": "68",
+          "result": 68.0,
           "unit": "µmol/L",
           "reference_range": "45 - 90",
           "flag": "normal",
@@ -896,7 +896,7 @@
         },
         {
           "test_name": "Haemoglobin",
-          "result": "11.2",
+          "result": 11.2,
           "unit": "g/dL",
           "reference_range": "12.0 - 15.5",
           "flag": "low",
@@ -988,7 +988,7 @@
       "predicted": [
         {
           "test_name": "Glucose",
-          "result": "5,6",
+          "result": 5.6,
           "unit": "mmol/L",
           "reference_range": "3,9 - 6,4",
           "flag": "normal",
@@ -996,7 +996,7 @@
         },
         {
           "test_name": "Ure",
-          "result": "4,8",
+          "result": 4.8,
           "unit": "mmol/L",
           "reference_range": "2,5 - 7,5",
           "flag": "normal",
@@ -1004,7 +1004,7 @@
         },
         {
           "test_name": "Creatinin",
-          "result": "112",
+          "result": 112.0,
           "unit": "μmol/L",
           "reference_range": "62 - 106",
           "flag": "high",
@@ -1012,7 +1012,7 @@
         },
         {
           "test_name": "AST (GOT)",
-          "result": "52",
+          "result": 52.0,
           "unit": "U/L",
           "reference_range": "≤ 37",
           "flag": "high",
@@ -1020,7 +1020,7 @@
         },
         {
           "test_name": "ALT (GPT)",
-          "result": "61",
+          "result": 61.0,
           "unit": "U/L",
           "reference_range": "≤ 40",
           "flag": "high",
@@ -1028,7 +1028,7 @@
         },
         {
           "test_name": "Acid uric",
-          "result": "395",
+          "result": 395.0,
           "unit": "μmol/L",
           "reference_range": "202 - 416",
           "flag": "normal",

@@ -21,9 +21,9 @@ from typing import Any
 
 from rapidfuzz import fuzz
 
-from medextract.normalize import normalize_number
+from medextract.postprocessing.normalize import normalize_number
+from medextract.postprocessing.validate import compute_lab_flag, validate_fields
 from medextract.schemas import FIELD_SPECS, FieldKind, FieldValue
-from medextract.validate import compute_lab_flag, validate_fields
 
 TEXT_MATCH = 90  # rapidfuzz ratio (0-100) needed for a text value to count as correct
 FIELD_CORRECT = 0.9  # a structured field counts as correct at this score or above

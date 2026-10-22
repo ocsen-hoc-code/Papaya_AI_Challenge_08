@@ -2,7 +2,7 @@
   {
     "source": "01_receipt_en.pdf",
     "document_type": "receipt",
-    "confidence": 1.0,
+    "confidence": 0.953,
     "errors": [],
     "warnings": [],
     "seconds": 144.88
@@ -10,7 +10,7 @@
   {
     "source": "02_receipt_vi.pdf",
     "document_type": "receipt",
-    "confidence": 1.0,
+    "confidence": 0.955,
     "errors": [
       "total_mismatch"
     ],
@@ -20,7 +20,7 @@
   {
     "source": "03_receipt_th.pdf",
     "document_type": "receipt",
-    "confidence": 1.0,
+    "confidence": 0.953,
     "errors": [],
     "warnings": [],
     "seconds": 79.06
@@ -28,7 +28,7 @@
   {
     "source": "04_discharge_summary_en.pdf",
     "document_type": "discharge_summary",
-    "confidence": 1.0,
+    "confidence": 0.963,
     "errors": [],
     "warnings": [],
     "seconds": 112.73
@@ -36,7 +36,7 @@
   {
     "source": "05_discharge_summary_vi.pdf",
     "document_type": "discharge_summary",
-    "confidence": 1.0,
+    "confidence": 0.963,
     "errors": [],
     "warnings": [
       "role_mismatch"
@@ -46,7 +46,7 @@
   {
     "source": "06_discharge_summary_th.png",
     "document_type": "discharge_summary",
-    "confidence": 1.0,
+    "confidence": 0.823,
     "errors": [
       "date_order"
     ],
@@ -58,23 +58,23 @@
   {
     "source": "07_lab_report_en.pdf",
     "document_type": "lab_report",
-    "confidence": 1.0,
+    "confidence": 0.92,
     "errors": [],
     "warnings": [],
-    "seconds": 175.29
+    "seconds": 52.34
   },
   {
     "source": "08_lab_report_vi.jpg",
     "document_type": "lab_report",
-    "confidence": 1.0,
+    "confidence": 0.745,
     "errors": [],
     "warnings": [],
-    "seconds": 174.15
+    "seconds": 83.13
   },
   {
     "source": "09_prescription_en.pdf",
     "document_type": "prescription",
-    "confidence": 1.0,
+    "confidence": 0.92,
     "errors": [],
     "warnings": [],
     "seconds": 142.68
@@ -82,7 +82,7 @@
   {
     "source": "10_prescription_vi.png",
     "document_type": "prescription",
-    "confidence": 1.0,
+    "confidence": 0.745,
     "errors": [],
     "warnings": [],
     "seconds": 127.79

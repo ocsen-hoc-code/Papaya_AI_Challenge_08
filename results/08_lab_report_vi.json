@@ -1,6 +1,6 @@
 {
   "document_type": "lab_report",
-  "confidence": 1.0,
+  "confidence": 0.745,
   "fields": {
     "lab_name": {
       "value": "TRUNG TÂM XÉT NGHIỆM Y KHOA LAM KIỀU",
@@ -18,7 +18,7 @@
       "value": [
         {
           "test_name": "Glucose",
-          "result": "5,6",
+          "result": 5.6,
           "unit": "mmol/L",
           "reference_range": "3,9 - 6,4",
           "flag": "normal",
@@ -26,7 +26,7 @@
         },
         {
           "test_name": "Ure",
-          "result": "4,8",
+          "result": 4.8,
           "unit": "mmol/L",
           "reference_range": "2,5 - 7,5",
           "flag": "normal",
@@ -34,7 +34,7 @@
         },
         {
           "test_name": "Creatinin",
-          "result": "112",
+          "result": 112.0,
           "unit": "μmol/L",
           "reference_range": "62 - 106",
           "flag": "high",
@@ -42,7 +42,7 @@
         },
         {
           "test_name": "AST (GOT)",
-          "result": "52",
+          "result": 52.0,
           "unit": "U/L",
           "reference_range": "≤ 37",
           "flag": "high",
@@ -50,7 +50,7 @@
         },
         {
           "test_name": "ALT (GPT)",
-          "result": "61",
+          "result": 61.0,
           "unit": "U/L",
           "reference_range": "≤ 40",
           "flag": "high",
@@ -58,7 +58,7 @@
         },
         {
           "test_name": "Acid uric",
-          "result": "395",
+          "result": 395.0,
           "unit": "μmol/L",
           "reference_range": "202 - 416",
           "flag": "normal",
@@ -68,35 +68,5 @@
       "confidence": 0.49
     }
   },
-  "validation_errors": [],
-  "meta": {
-    "source": "08_lab_report_vi.jpg",
-    "backend": "mlx",
-    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
-    "pages": 1,
-    "has_text_layer": false,
-    "classification_scores": {
-      "receipt": 0.0,
-      "discharge_summary": 0.0,
-      "lab_report": 0.95,
-      "prescription": 0.0
-    },
-    "language": "vi",
-    "classify_attempts": 1,
-    "extract_attempts": 1,
-    "generated_tokens": 432,
-    "grounding": {
-      "lab_name": "no_reference",
-      "patient_name": "no_reference",
-      "date": "no_reference",
-      "tests": "no_reference"
-    },
-    "timings": {
-      "ingest_s": 0.04,
-      "classify_s": 40.89,
-      "extract_s": 133.21,
-      "postprocess_s": 0.001,
-      "total_s": 174.15
-    }
-  }
+  "validation_errors": []
 }

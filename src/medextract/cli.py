@@ -13,8 +13,8 @@ import logging
 import sys
 from pathlib import Path
 
-from .config import Settings
-from .schemas import ExtractionResult
+from medextract.config import Settings
+from medextract.schemas import ExtractionResult
 
 SUPPORTED_SUFFIXES = {".pdf", ".png", ".jpg", ".jpeg", ".webp", ".tif", ".tiff"}
 
@@ -70,7 +70,7 @@ def _print_summary(rows: list[dict]) -> None:
 
 
 async def _run(args: argparse.Namespace) -> int:
-    from .pipeline import Pipeline
+    from medextract.pipeline import Pipeline
 
     paths = collect_paths(args.inputs)
     if not paths:
@@ -81,7 +81,7 @@ async def _run(args: argparse.Namespace) -> int:
     if out_dir:
         out_dir.mkdir(parents=True, exist_ok=True)
 
-    include_meta = not args.no_meta
+    include_meta = args.meta
 
     def save(result: ExtractionResult) -> None:
         if out_dir is None:
@@ -105,7 +105,7 @@ async def _run(args: argparse.Namespace) -> int:
 
 
 def _info(args: argparse.Namespace) -> int:
-    from .device import cuda_available, detect_backend, mlx_available, resolve_model_id
+    from medextract.backends.factory import cuda_available, detect_backend, mlx_available, resolve_model_id
 
     settings = Settings.from_env(device=args.device, model_id=args.model)
     kind = detect_backend(settings.device)
@@ -133,7 +133,11 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("inputs", nargs="+", help="document files and/or directories")
     run.add_argument("-o", "--output", help="directory for <name>.json results and summary.json")
     run.add_argument("--concurrency", type=int, help="documents in flight (default 4)")
-    run.add_argument("--no-meta", action="store_true", help="omit the diagnostic 'meta' block")
+    run.add_argument(
+        "--meta",
+        action="store_true",
+        help="include the diagnostic 'meta' block (source, backend, timings, grounding); hidden by default",
+    )
 
     sub.add_parser("info", parents=[common], help="show the detected backend and settings")
     return parser

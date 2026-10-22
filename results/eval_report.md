@@ -24,16 +24,16 @@
 
 | Document | Truth | Predicted | Confidence |
 |---|---|---|---|
-| 01_receipt_en.pdf | receipt | ✅ receipt | 1.0 |
-| 02_receipt_vi.pdf | receipt | ✅ receipt | 1.0 |
-| 03_receipt_th.pdf | receipt | ✅ receipt | 1.0 |
-| 04_discharge_summary_en.pdf | discharge_summary | ✅ discharge_summary | 1.0 |
-| 05_discharge_summary_vi.pdf | discharge_summary | ✅ discharge_summary | 1.0 |
-| 06_discharge_summary_th.png | discharge_summary | ✅ discharge_summary | 1.0 |
-| 07_lab_report_en.pdf | lab_report | ✅ lab_report | 1.0 |
-| 08_lab_report_vi.jpg | lab_report | ✅ lab_report | 1.0 |
-| 09_prescription_en.pdf | prescription | ✅ prescription | 1.0 |
-| 10_prescription_vi.png | prescription | ✅ prescription | 1.0 |
+| 01_receipt_en.pdf | receipt | ✅ receipt | 0.953 |
+| 02_receipt_vi.pdf | receipt | ✅ receipt | 0.955 |
+| 03_receipt_th.pdf | receipt | ✅ receipt | 0.953 |
+| 04_discharge_summary_en.pdf | discharge_summary | ✅ discharge_summary | 0.963 |
+| 05_discharge_summary_vi.pdf | discharge_summary | ✅ discharge_summary | 0.963 |
+| 06_discharge_summary_th.png | discharge_summary | ✅ discharge_summary | 0.823 |
+| 07_lab_report_en.pdf | lab_report | ✅ lab_report | 0.92 |
+| 08_lab_report_vi.jpg | lab_report | ✅ lab_report | 0.745 |
+| 09_prescription_en.pdf | prescription | ✅ prescription | 0.92 |
+| 10_prescription_vi.png | prescription | ✅ prescription | 0.745 |
 
 ## Fields
 

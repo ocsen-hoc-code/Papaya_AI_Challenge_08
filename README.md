@@ -41,6 +41,7 @@ The model weights download from Hugging Face on first use: ~5 GB for MLX, ~17 GB
 .venv/bin/medextract info                                    # which backend/model will be used
 .venv/bin/medextract run document-tests/ -o results/         # a whole folder -> results/<name>.json + summary.json
 .venv/bin/medextract run document-tests/01_receipt_en.pdf    # one file -> JSON on stdout
+.venv/bin/medextract run x.pdf --meta                        # also show the diagnostic "meta" block
 .venv/bin/medextract run docs/ -o out/ --concurrency 2 --device cpu --model Qwen/Qwen3-VL-2B-Instruct
 .venv/bin/python scripts/eval.py                             # score results/ against ground_truth/
 ```
@@ -54,13 +55,18 @@ from medextract.pipeline import Pipeline
 async def main():
     async with Pipeline.from_env() as pipeline:          # auto-selects MLX -> CUDA -> CPU
         result = await pipeline.process_document("x.pdf")
-        print(result.to_json_dict(include_meta=False))
+        print(result.to_json_dict())                     # spec format; include_meta=True adds diagnostics
+        print(result.meta["timings"])                    # meta is always available on the object
         results = await pipeline.process_batch(["a.pdf", "b.png"], concurrency=4)
         async for r in pipeline.stream(["c.jpg", "d.pdf"]):   # results as they finish
             ...
 
 asyncio.run(main())
 ```
+
+The JSON output follows the spec format only. Diagnostics are hidden unless you pass `--meta` (CLI) or
+`include_meta=True` (Python). They cover the source file, backend and model, detected language, classification scores,
+per-stage timings, retry counts and the grounding status of each field.
 
 Settings come from environment variables, and CLI flags override them:
 
@@ -88,7 +94,7 @@ file ─► ingest ─────────► classify ─────► ex
   thread-safe. Loading, PDF rendering and post-processing of other documents overlap with inference. A failing document
   produces a result with `validation_errors` (`ingest_error`, `timeout`, `invalid_model_output`, …) and never stops the
   batch.
-- **Backends.** `vlm/base.py` defines `VLMBackend`. `device.py` picks `MLXBackend` (Apple Silicon), then
+- **Backends.** `backends/base.py` defines `VLMBackend`. `backends/factory.py` picks `MLXBackend` (Apple Silicon), then
   `TransformersBackend` on CUDA (4-bit NF4), then the CPU (bf16). `FakeBackend` drives the unit tests without a model.
 - **The model transcribes; code decides.** Prompts ask for values exactly as printed. Calendar conversion
   (Buddhist era), number formats (`1.500.000`, `1,500.00`, Thai digits), totals and lab-flag checks happen in
@@ -115,13 +121,26 @@ See **[docs/PROMPTING.md](docs/PROMPTING.md)** for the prompt engineering approa
 
 Lab tests without a printed flag get one derived from the reference range, marked `"flag_source": "derived"`.
 
+Numbers are returned as floats: amounts, quantities and lab results (`"7.8"` → `7.8`, Vietnamese `"5,6"` → `5.6`,
+Thai digits included). A lab result that is not a bare number (`"< 0.5"`, `"Positive"`) stays a string, as printed.
+
 ## Project layout
 
 ```
-src/medextract/   pipeline.py  cli.py  config.py  device.py  ingest.py  schemas.py
-                  normalize.py validate.py grounding.py confidence.py parsing.py roles.py
-                  prompts/     vlm/{base,mlx_backend,transformers_backend,fake}.py
-tests/            unit tests (FakeBackend) + test_integration.py (real model, -m slow)
+src/medextract/
+├── __init__.py          public API: Pipeline, Settings, ExtractionResult
+├── __main__.py          python -m medextract
+├── cli.py               `medextract` command
+├── config.py            Settings (MEDEXTRACT_* variables)
+├── pipeline.py          async orchestrator
+├── schemas.py           data contracts, FIELD_SPECS
+├── ingestion/           loader.py: PDF/image -> page images + text layer
+├── backends/            base.py (interface), factory.py (MLX -> CUDA -> CPU), mlx.py, transformers.py, fake.py
+├── extraction/          prompts.py, parsing.py (tolerant JSON + retry)
+└── postprocessing/      roles.py, normalize.py, grounding.py, confidence.py, validate.py
+tests/
+├── unit/                mirrors src/ (FakeBackend, no model needed)
+└── integration/         real-model tests (-m slow)
 document-tests/   the 10 test documents
 ground_truth/     hand-labelled answers for the 10 documents
 results/          pipeline output for the 10 documents + eval_report.md
@@ -133,8 +152,8 @@ tasks/            task board (todo / pending / done)
 
 ```bash
 .venv/bin/pytest -q                                   # unit tests, no model needed
-.venv/bin/pytest tests/test_normalize.py -q           # one file
-.venv/bin/pytest tests/test_validate.py -k total -q   # one test by name
+.venv/bin/pytest tests/unit/postprocessing/test_normalize.py -q          # one file
+.venv/bin/pytest tests/unit/postprocessing/test_validate.py -k total -q  # one test by name
 .venv/bin/pytest -m slow -q                           # real-model tests (downloads/uses the model)
 .venv/bin/ruff check src tests scripts
 ```
@@ -166,8 +185,11 @@ truyền dịch" (antibiotics, analgesia, IV fluids). The pipeline reports both 
 the surgery. This is a judgement call rather than a misread.
 
 The confidence scores follow how reliable the source is: values grounded in a PDF text layer score ~0.93–0.98, values
-read only from an image (no text to check against) ~0.5–0.73, and absent fields 0.05. Classification confidence is 1.0 for
-all 10 documents, because the model gave near-certain type scores on these clear examples.
+read only from an image (no text to check against) ~0.5–0.73, and absent fields 0.05. The document-level confidence
+combines the classifier's type score with how well the type's key fields were found (`items` + `grand_total` for a
+receipt, `medications` for a prescription, …): 0.92–0.96 for the PDFs, 0.75–0.82 for the scanned images. A document
+classified with certainty but missing its key fields drops below 0.6 and gets a `low_classification_confidence` warning.
+The raw classifier score is kept in `meta.classifier_confidence`.
 
 ## Limitations
 

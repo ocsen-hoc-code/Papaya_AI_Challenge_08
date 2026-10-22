@@ -22,15 +22,23 @@ from typing import Any
 
 from PIL import Image
 
-from .confidence import classification_confidence, field_confidence, find_value_span, span_token_prob
-from .config import Settings
-from .grounding import ground_field, text_layer_usable
-from .ingest import DocumentInput, IngestError, aload_document
-from .normalize import Normalized, detect_language, normalize_value
-from .parsing import JSONParseError, generate_structured
-from .prompts import SYSTEM_PROMPT, build_classify_prompt, build_extract_prompt
-from .roles import check_person_roles, reconcile_date_labels
-from .schemas import (
+from medextract.backends.base import GenerationResult, VLMBackend, VLMError
+from medextract.config import Settings
+from medextract.extraction.parsing import JSONParseError, generate_structured
+from medextract.extraction.prompts import SYSTEM_PROMPT, build_classify_prompt, build_extract_prompt
+from medextract.ingestion.loader import DocumentInput, IngestError, aload_document
+from medextract.postprocessing.confidence import (
+    classification_confidence,
+    document_confidence,
+    field_confidence,
+    find_value_span,
+    span_token_prob,
+)
+from medextract.postprocessing.grounding import ground_field, text_layer_usable
+from medextract.postprocessing.normalize import Normalized, detect_language, normalize_value
+from medextract.postprocessing.roles import check_person_roles, reconcile_date_labels
+from medextract.postprocessing.validate import compute_lab_flag, validate_fields
+from medextract.schemas import (
     FIELD_SPECS,
     DocumentType,
     ExtractionResult,
@@ -40,8 +48,6 @@ from .schemas import (
     RawField,
     ValidationIssue,
 )
-from .validate import compute_lab_flag, validate_fields
-from .vlm.base import GenerationResult, VLMBackend, VLMError
 
 logger = logging.getLogger("medextract")
 
@@ -64,7 +70,7 @@ class Pipeline:
     @classmethod
     def from_env(cls, **overrides: Any) -> Pipeline:
         """Build settings from ``MEDEXTRACT_*`` variables and pick the best available backend."""
-        from .device import create_backend
+        from medextract.backends.factory import create_backend
 
         settings = Settings.from_env(**overrides)
         return cls(create_backend(settings), settings)
@@ -258,19 +264,24 @@ def assemble_result(
     if doc_type == "lab_report":
         _fill_missing_lab_flags(fields)
 
-    if type_confidence < LOW_CLASSIFICATION_CONFIDENCE:
+    confidence = document_confidence(type_confidence, doc_type, {n: f.confidence for n, f in fields.items()})
+    if confidence < LOW_CLASSIFICATION_CONFIDENCE:
         issues.append(
             ValidationIssue(
                 code="low_classification_confidence",
-                message=f"Document type '{doc_type}' assigned with low confidence ({type_confidence:.2f})",
+                message=(
+                    f"Document type '{doc_type}' assigned with low confidence ({confidence:.2f}): "
+                    "the classifier was unsure or the type's key fields were not found"
+                ),
                 severity="warning",
             )
         )
 
     meta["grounding"] = grounding_report
+    meta["classifier_confidence"] = type_confidence
     return ExtractionResult(
         document_type=doc_type,
-        confidence=type_confidence,
+        confidence=confidence,
         fields=fields,
         validation_errors=issues,
         meta=meta,

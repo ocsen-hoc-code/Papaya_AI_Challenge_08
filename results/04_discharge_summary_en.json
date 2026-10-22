@@ -1,6 +1,6 @@
 {
   "document_type": "discharge_summary",
-  "confidence": 1.0,
+  "confidence": 0.963,
   "fields": {
     "hospital_name": {
       "value": "Mount Elara Medical Centre",
@@ -44,39 +44,5 @@
       "confidence": 0.97
     }
   },
-  "validation_errors": [],
-  "meta": {
-    "source": "04_discharge_summary_en.pdf",
-    "backend": "mlx",
-    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
-    "pages": 1,
-    "has_text_layer": true,
-    "classification_scores": {
-      "receipt": 0.0,
-      "discharge_summary": 0.98,
-      "lab_report": 0.0,
-      "prescription": 0.0
-    },
-    "language": "en",
-    "classify_attempts": 1,
-    "extract_attempts": 1,
-    "generated_tokens": 500,
-    "grounding": {
-      "hospital_name": "exact",
-      "patient_name": "exact",
-      "admission_date": "exact",
-      "discharge_date": "exact",
-      "diagnosis": "exact",
-      "procedures_performed": "exact",
-      "attending_physician": "exact",
-      "discharge_instructions": "exact"
-    },
-    "timings": {
-      "ingest_s": 0.19,
-      "classify_s": 22.86,
-      "extract_s": 89.67,
-      "postprocess_s": 0.003,
-      "total_s": 112.73
-    }
-  }
+  "validation_errors": []
 }

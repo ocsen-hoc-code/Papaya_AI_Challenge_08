@@ -1,6 +1,6 @@
 {
   "document_type": "receipt",
-  "confidence": 1.0,
+  "confidence": 0.953,
   "fields": {
     "hospital_name": {
       "value": "ร้านยาเภสัชสุขใจ",
@@ -52,37 +52,5 @@
       "confidence": 0.96
     }
   },
-  "validation_errors": [],
-  "meta": {
-    "source": "03_receipt_th.pdf",
-    "backend": "mlx",
-    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
-    "pages": 1,
-    "has_text_layer": true,
-    "classification_scores": {
-      "receipt": 0.98,
-      "discharge_summary": 0.0,
-      "lab_report": 0.0,
-      "prescription": 0.0
-    },
-    "language": "th",
-    "classify_attempts": 1,
-    "extract_attempts": 1,
-    "generated_tokens": 517,
-    "grounding": {
-      "hospital_name": "exact",
-      "patient_name": "exact",
-      "date": "partial",
-      "items": "exact",
-      "grand_total": "exact",
-      "payment_method": "exact"
-    },
-    "timings": {
-      "ingest_s": 0.16,
-      "classify_s": 12.13,
-      "extract_s": 66.77,
-      "postprocess_s": 0.004,
-      "total_s": 79.06
-    }
-  }
+  "validation_errors": []
 }

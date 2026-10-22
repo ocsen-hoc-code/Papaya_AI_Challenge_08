@@ -12,8 +12,8 @@ The venv is `.venv/` (`python3 -m venv .venv && .venv/bin/pip install -e ".[mlx,
 
 ```bash
 .venv/bin/pytest -q                                    # unit tests (FakeBackend, no model, ~5 s)
-.venv/bin/pytest tests/test_validate.py -q             # one file
-.venv/bin/pytest tests/test_validate.py -k total -q    # one test by name
+.venv/bin/pytest tests/unit/postprocessing/test_validate.py -q            # one file
+.venv/bin/pytest tests/unit/postprocessing/test_validate.py -k total -q   # one test by name
 .venv/bin/pytest -m slow -q                            # real-model tests (slow; deselected by default)
 .venv/bin/ruff check src tests scripts                 # lint (line length 120)
 .venv/bin/medextract info                              # detected backend/model
@@ -26,9 +26,10 @@ Only one process should use the 8B model at a time on an 18 GB machine (~7 GB pe
 ## Architecture
 
 - `pipeline.py` orchestrates: `ingest` (PDF render + text layer) → classify (VLM, 1024 px image) → extract (VLM, per-type prompt) → `assemble_result`, which normalizes, grounds, scores confidence and validates each field. `process_batch` bounds in-flight documents with a semaphore. A document-level failure becomes a result with a `validation_errors` code and never raises.
-- `schemas.FIELD_SPECS` is the single source of truth for fields per type. Prompts (`prompts/builders.py`), normalization and validation are all driven by it, so add a field there first.
-- `vlm/base.py`: `VLMBackend` interface; `ThreadedBackend` runs all model calls on one dedicated thread (MLX is not thread-safe). `device.create_backend` picks MLX → CUDA → CPU.
-- The model only transcribes (dates and amounts as printed). Conversion lives in `normalize.py`, rules in `validate.py`, hallucination checks against the PDF text layer in `grounding.py`, and the confidence formula in `confidence.py`.
+- Layout: `src/medextract/` has `pipeline.py`, `config.py`, `schemas.py`, `cli.py` at the top, plus one subpackage per layer: `ingestion/` (loader), `backends/` (base, factory, mlx, transformers, fake), `extraction/` (prompts, parsing), `postprocessing/` (roles, normalize, grounding, confidence, validate). Imports are absolute (`from medextract.postprocessing.normalize import ...`). Tests mirror it under `tests/unit/`; real-model tests live in `tests/integration/`.
+- `schemas.FIELD_SPECS` is the single source of truth for fields per type. Prompts (`extraction/prompts.py`), normalization and validation are all driven by it, so add a field there first.
+- `backends/base.py`: `VLMBackend` interface; `ThreadedBackend` runs all model calls on one dedicated thread (MLX is not thread-safe). `backends/factory.create_backend` picks MLX → CUDA → CPU. Never load the MLX and Transformers backends in the same process (mlx-vlm patches processors process-wide).
+- The model only transcribes (dates and amounts as printed). Conversion lives in `postprocessing/normalize.py`, rules in `validate.py`, hallucination checks against the PDF text layer in `grounding.py`, and the confidence formula in `confidence.py`.
 - `RawExtraction` accepts bare field values (the model often omits the `{"value": ...}` wrapper for lists).
 
 ## Task tracking (`tasks/`)

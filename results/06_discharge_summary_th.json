@@ -1,6 +1,6 @@
 {
   "document_type": "discharge_summary",
-  "confidence": 1.0,
+  "confidence": 0.823,
   "fields": {
     "hospital_name": {
       "value": "โรงพยาบาลสุขใจเวชการ",
@@ -55,39 +55,5 @@
       "message": "Admission and discharge dates were swapped to match their printed labels (admission evidence: 'วันที่รับไว้ในโรงพยาบาล 15/04/2567 เวลา 21:40 น.'; discharge evidence: 'วันที่ถึงหน่วย 12/04/2567 เวลา 10:15 น.')",
       "severity": "warning"
     }
-  ],
-  "meta": {
-    "source": "06_discharge_summary_th.png",
-    "backend": "mlx",
-    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
-    "pages": 1,
-    "has_text_layer": false,
-    "classification_scores": {
-      "receipt": 0.0,
-      "discharge_summary": 0.95,
-      "lab_report": 0.0,
-      "prescription": 0.0
-    },
-    "language": "th",
-    "classify_attempts": 1,
-    "extract_attempts": 1,
-    "generated_tokens": 579,
-    "grounding": {
-      "hospital_name": "no_reference",
-      "patient_name": "no_reference",
-      "admission_date": "no_reference",
-      "discharge_date": "no_reference",
-      "diagnosis": "no_reference",
-      "procedures_performed": "no_reference",
-      "attending_physician": "no_reference",
-      "discharge_instructions": "no_reference"
-    },
-    "timings": {
-      "ingest_s": 0.09,
-      "classify_s": 21.28,
-      "extract_s": 147.61,
-      "postprocess_s": 0.001,
-      "total_s": 168.98
-    }
-  }
+  ]
 }
