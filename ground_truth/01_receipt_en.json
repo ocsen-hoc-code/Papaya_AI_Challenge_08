@@ -1,0 +1,21 @@
+{
+  "source": "01_receipt_en.pdf",
+  "document_type": "receipt",
+  "language": "en",
+  "fields": {
+    "hospital_name": "Riverside General Hospital",
+    "patient_name": "Daniel Tan Wei Ming",
+    "date": "2024-03-14",
+    "items": [
+      {"description": "Specialist Consultation - Cardiology", "quantity": 1, "unit_price": 180.0, "total": 180.0},
+      {"description": "Electrocardiogram (ECG), 12-lead", "quantity": 1, "unit_price": 95.0, "total": 95.0},
+      {"description": "Transthoracic Echocardiogram", "quantity": 1, "unit_price": 520.0, "total": 520.0},
+      {"description": "Full Blood Count", "quantity": 1, "unit_price": 38.5, "total": 38.5},
+      {"description": "Lipid Panel", "quantity": 1, "unit_price": 62.0, "total": 62.0},
+      {"description": "Atorvastatin 20 mg tablet", "quantity": 30, "unit_price": 1.2, "total": 36.0}
+    ],
+    "grand_total": 931.5,
+    "payment_method": "Credit Card (VISA **** 4821)"
+  },
+  "notes": "Clean digital PDF, fully legible. Date printed as '14 Mar 2024 10:42' (time not part of the field). Item totals sum to 931.50, which equals Total Amount Payable, Amount Paid (balance 0.00): no mismatch. The MRN 00482913 and receipt number INV-2024-031407 are not schema fields. Card digits kept as printed. Expected validation result: clean (no errors)."
+}

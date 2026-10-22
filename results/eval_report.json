@@ -1,0 +1,1316 @@
+{
+  "summary": {
+    "documents": 10,
+    "classification_accuracy": 1,
+    "field_accuracy": 0.983,
+    "mean_field_score": 0.993,
+    "non_null_field_accuracy": 0.982,
+    "hallucinated_fields": 0,
+    "truth_null_fields": 1,
+    "missed_fields": 0,
+    "mean_confidence_correct": 0.843,
+    "mean_confidence_incorrect": 0.84,
+    "confidence_spread": 0.93,
+    "distinct_confidence_values": 12,
+    "validation_expected": 2,
+    "validation_caught": 2,
+    "validation_extra": 0
+  },
+  "documents": [
+    {
+      "source": "01_receipt_en.pdf",
+      "truth_type": "receipt",
+      "predicted_type": "receipt",
+      "type_correct": true,
+      "type_confidence": 1.0
+    },
+    {
+      "source": "02_receipt_vi.pdf",
+      "truth_type": "receipt",
+      "predicted_type": "receipt",
+      "type_correct": true,
+      "type_confidence": 1.0
+    },
+    {
+      "source": "03_receipt_th.pdf",
+      "truth_type": "receipt",
+      "predicted_type": "receipt",
+      "type_correct": true,
+      "type_confidence": 1.0
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "truth_type": "discharge_summary",
+      "predicted_type": "discharge_summary",
+      "type_correct": true,
+      "type_confidence": 1.0
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "truth_type": "discharge_summary",
+      "predicted_type": "discharge_summary",
+      "type_correct": true,
+      "type_confidence": 1.0
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "truth_type": "discharge_summary",
+      "predicted_type": "discharge_summary",
+      "type_correct": true,
+      "type_confidence": 1.0
+    },
+    {
+      "source": "07_lab_report_en.pdf",
+      "truth_type": "lab_report",
+      "predicted_type": "lab_report",
+      "type_correct": true,
+      "type_confidence": 1.0
+    },
+    {
+      "source": "08_lab_report_vi.jpg",
+      "truth_type": "lab_report",
+      "predicted_type": "lab_report",
+      "type_correct": true,
+      "type_confidence": 1.0
+    },
+    {
+      "source": "09_prescription_en.pdf",
+      "truth_type": "prescription",
+      "predicted_type": "prescription",
+      "type_correct": true,
+      "type_confidence": 1.0
+    },
+    {
+      "source": "10_prescription_vi.png",
+      "truth_type": "prescription",
+      "predicted_type": "prescription",
+      "type_correct": true,
+      "type_confidence": 1.0
+    }
+  ],
+  "fields": [
+    {
+      "source": "01_receipt_en.pdf",
+      "field": "hospital_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": "Riverside General Hospital",
+      "predicted": "Riverside General Hospital"
+    },
+    {
+      "source": "01_receipt_en.pdf",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "Daniel Tan Wei Ming",
+      "predicted": "Daniel Tan Wei Ming"
+    },
+    {
+      "source": "01_receipt_en.pdf",
+      "field": "date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.86,
+      "truth": "2024-03-14",
+      "predicted": "2024-03-14"
+    },
+    {
+      "source": "01_receipt_en.pdf",
+      "field": "items",
+      "kind": "receipt_items",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.84,
+      "truth": [
+        {
+          "description": "Specialist Consultation - Cardiology",
+          "quantity": 1,
+          "unit_price": 180.0,
+          "total": 180.0
+        },
+        {
+          "description": "Electrocardiogram (ECG), 12-lead",
+          "quantity": 1,
+          "unit_price": 95.0,
+          "total": 95.0
+        },
+        {
+          "description": "Transthoracic Echocardiogram",
+          "quantity": 1,
+          "unit_price": 520.0,
+          "total": 520.0
+        },
+        {
+          "description": "Full Blood Count",
+          "quantity": 1,
+          "unit_price": 38.5,
+          "total": 38.5
+        },
+        {
+          "description": "Lipid Panel",
+          "quantity": 1,
+          "unit_price": 62.0,
+          "total": 62.0
+        },
+        {
+          "description": "Atorvastatin 20 mg tablet",
+          "quantity": 30,
+          "unit_price": 1.2,
+          "total": 36.0
+        }
+      ],
+      "predicted": [
+        {
+          "description": "Specialist Consultation - Cardiology",
+          "quantity": 1.0,
+          "unit_price": 180.0,
+          "total": 180.0
+        },
+        {
+          "description": "Electrocardiogram (ECG), 12-lead",
+          "quantity": 1.0,
+          "unit_price": 95.0,
+          "total": 95.0
+        },
+        {
+          "description": "Transthoracic Echocardiogram",
+          "quantity": 1.0,
+          "unit_price": 520.0,
+          "total": 520.0
+        },
+        {
+          "description": "Full Blood Count",
+          "quantity": 1.0,
+          "unit_price": 38.5,
+          "total": 38.5
+        },
+        {
+          "description": "Lipid Panel",
+          "quantity": 1.0,
+          "unit_price": 62.0,
+          "total": 62.0
+        },
+        {
+          "description": "Atorvastatin 20 mg tablet",
+          "quantity": 30.0,
+          "unit_price": 1.2,
+          "total": 36.0
+        }
+      ]
+    },
+    {
+      "source": "01_receipt_en.pdf",
+      "field": "grand_total",
+      "kind": "amount",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": 931.5,
+      "predicted": 931.5
+    },
+    {
+      "source": "01_receipt_en.pdf",
+      "field": "payment_method",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.96,
+      "truth": "Credit Card (VISA **** 4821)",
+      "predicted": "Credit Card (VISA **** 4821)"
+    },
+    {
+      "source": "02_receipt_vi.pdf",
+      "field": "hospital_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": "BỆNH VIỆN ĐA KHOA THANH VÂN",
+      "predicted": "BỆNH VIỆN ĐA KHOA THANH VÂN"
+    },
+    {
+      "source": "02_receipt_vi.pdf",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "Trần Thị Mai Hương",
+      "predicted": "Trần Thị Mai Hương"
+    },
+    {
+      "source": "02_receipt_vi.pdf",
+      "field": "date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "2024-04-08",
+      "predicted": "2024-04-08"
+    },
+    {
+      "source": "02_receipt_vi.pdf",
+      "field": "items",
+      "kind": "receipt_items",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.84,
+      "truth": [
+        {
+          "description": "Khám chuyên khoa Tiêu hóa",
+          "quantity": 1,
+          "unit_price": 300000.0,
+          "total": 300000.0
+        },
+        {
+          "description": "Nội soi dạ dày - tá tràng",
+          "quantity": 1,
+          "unit_price": 1250000.0,
+          "total": 1250000.0
+        },
+        {
+          "description": "Test hơi thở tìm Helicobacter pylori",
+          "quantity": 1,
+          "unit_price": 650000.0,
+          "total": 650000.0
+        },
+        {
+          "description": "Siêu âm ổ bụng tổng quát",
+          "quantity": 1,
+          "unit_price": 280000.0,
+          "total": 280000.0
+        },
+        {
+          "description": "Esomeprazol 40mg (viên)",
+          "quantity": 28,
+          "unit_price": 9500.0,
+          "total": 266000.0
+        }
+      ],
+      "predicted": [
+        {
+          "description": "Khám chuyên khoa Tiêu hóa",
+          "quantity": 1.0,
+          "unit_price": 300000.0,
+          "total": 300000.0
+        },
+        {
+          "description": "Nội soi dạ dày - tá tràng",
+          "quantity": 1.0,
+          "unit_price": 1250000.0,
+          "total": 1250000.0
+        },
+        {
+          "description": "Test hơi thở tìm Helicobacter pylori",
+          "quantity": 1.0,
+          "unit_price": 650000.0,
+          "total": 650000.0
+        },
+        {
+          "description": "Siêu âm ổ bụng tổng quát",
+          "quantity": 1.0,
+          "unit_price": 280000.0,
+          "total": 280000.0
+        },
+        {
+          "description": "Esomeprazol 40mg (viên)",
+          "quantity": 28.0,
+          "unit_price": 9500.0,
+          "total": 266000.0
+        }
+      ]
+    },
+    {
+      "source": "02_receipt_vi.pdf",
+      "field": "grand_total",
+      "kind": "amount",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": 2938000.0,
+      "predicted": 2938000.0
+    },
+    {
+      "source": "02_receipt_vi.pdf",
+      "field": "payment_method",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "Tiền mặt",
+      "predicted": "Tiền mặt"
+    },
+    {
+      "source": "03_receipt_th.pdf",
+      "field": "hospital_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": "ร้านยาเภสัชสุขใจ",
+      "predicted": "ร้านยาเภสัชสุขใจ"
+    },
+    {
+      "source": "03_receipt_th.pdf",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "พิมพ์ชนก ศรีสุข",
+      "predicted": "พิมพ์ชนก ศรีสุข"
+    },
+    {
+      "source": "03_receipt_th.pdf",
+      "field": "date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.72,
+      "truth": "2024-03-22",
+      "predicted": "2024-03-22"
+    },
+    {
+      "source": "03_receipt_th.pdf",
+      "field": "items",
+      "kind": "receipt_items",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.84,
+      "truth": [
+        {
+          "description": "พาราเซตามอล ๕๐๐ มก. (เม็ด)",
+          "quantity": 20,
+          "unit_price": 1.5,
+          "total": 30.0
+        },
+        {
+          "description": "อะม็อกซีซิลลิน ๕๐๐ มก. (แคปซูล)",
+          "quantity": 21,
+          "unit_price": 4.0,
+          "total": 84.0
+        },
+        {
+          "description": "ยาน้ำแก้ไอ บรอมเฮกซีน ๖๐ มล.",
+          "quantity": 1,
+          "unit_price": 65.0,
+          "total": 65.0
+        },
+        {
+          "description": "ผงเกลือแร่ โอ.อาร์.เอส. (ซอง)",
+          "quantity": 5,
+          "unit_price": 8.0,
+          "total": 40.0
+        }
+      ],
+      "predicted": [
+        {
+          "description": "พาราเซตามอล ๕๐๐ มก. (เม็ด)",
+          "quantity": 20.0,
+          "unit_price": 1.5,
+          "total": 30.0
+        },
+        {
+          "description": "อะม็อกซีซิลลิน ๕๐๐ มก. (แคปซูล)",
+          "quantity": 21.0,
+          "unit_price": 4.0,
+          "total": 84.0
+        },
+        {
+          "description": "ยาน้ำแก้ไอ บรอมเฮกซีน ๖๐ มล.",
+          "quantity": 1.0,
+          "unit_price": 65.0,
+          "total": 65.0
+        },
+        {
+          "description": "ผงเกลือแร่ โอ.อาร์.เอส. (ซอง)",
+          "quantity": 5.0,
+          "unit_price": 8.0,
+          "total": 40.0
+        }
+      ]
+    },
+    {
+      "source": "03_receipt_th.pdf",
+      "field": "grand_total",
+      "kind": "amount",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": 219.0,
+      "predicted": 219.0
+    },
+    {
+      "source": "03_receipt_th.pdf",
+      "field": "payment_method",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.96,
+      "truth": "เงินสด",
+      "predicted": "เงินสด"
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "field": "hospital_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": "Mount Elara Medical Centre",
+      "predicted": "Mount Elara Medical Centre"
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "Aisha binti Rahman",
+      "predicted": "Aisha binti Rahman"
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "field": "admission_date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "2024-02-03",
+      "predicted": "2024-02-03"
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "field": "discharge_date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "2024-02-09",
+      "predicted": "2024-02-09"
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "field": "diagnosis",
+      "kind": "diagnosis",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.84,
+      "truth": {
+        "primary": "Lobar pneumonia, right lower lobe (J18.1)",
+        "secondary": [
+          "Type 2 diabetes mellitus without complications (E11.9)",
+          "Essential hypertension (I10)"
+        ]
+      },
+      "predicted": {
+        "primary": "Lobar pneumonia, right lower lobe (J18.1)",
+        "secondary": [
+          "Type 2 diabetes mellitus without complications (E11.9)",
+          "Essential hypertension (I10)"
+        ]
+      }
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "field": "procedures_performed",
+      "kind": "text_list",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.84,
+      "truth": [
+        "Chest radiograph, PA and lateral views",
+        "Diagnostic thoracentesis, right side"
+      ],
+      "predicted": [
+        "Chest radiograph, PA and lateral views",
+        "Diagnostic thoracentesis, right side"
+      ]
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "field": "attending_physician",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "Dr. Kevin Lim Chee Keong",
+      "predicted": "Dr. Kevin Lim Chee Keong"
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "field": "discharge_instructions",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "1. Complete oral amoxicillin-clavulanate 625 mg three times daily for 5 more days. 2. Check blood glucose twice daily and continue metformin 500 mg twice daily. 3. Return to the Emergency Department if fever above 38.5°C, shortness of breath or chest pain. 4. Follow up at the Respiratory Clinic in 2 weeks with a repeat chest X-ray.",
+      "predicted": "1. Complete oral amoxicillin-clavulanate 625 mg three times daily for 5 more days.\n2. Check blood glucose twice daily and continue metformin 500 mg twice daily.\n3. Return to the Emergency Department if fever above 38.5°C, shortness of breath or chest pain.\n4. Follow up at the Respiratory Clinic in 2 weeks with a repeat chest X-ray."
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "field": "hospital_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": "BỆNH VIỆN ĐA KHOA LAM GIANG",
+      "predicted": "BỆNH VIỆN ĐA KHOA LAM GIANG"
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "PHẠM QUỐC BẢO",
+      "predicted": "PHẠM QUỐC BẢO"
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "field": "admission_date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "2024-03-11",
+      "predicted": "2024-03-11"
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "field": "discharge_date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "2024-03-18",
+      "predicted": "2024-03-18"
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "field": "diagnosis",
+      "kind": "diagnosis",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.84,
+      "truth": {
+        "primary": "Viêm ruột thừa cấp (K35.8)",
+        "secondary": [
+          "Thiếu máu nhẹ (D64.9)"
+        ]
+      },
+      "predicted": {
+        "primary": "Viêm ruột thừa cấp (K35.8)",
+        "secondary": [
+          "Thiếu máu nhẹ (D64.9)"
+        ]
+      }
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "field": "procedures_performed",
+      "kind": "text_list",
+      "score": 0.667,
+      "outcome": "partial",
+      "confidence": 0.84,
+      "truth": [
+        "Phẫu thuật nội soi cắt ruột thừa ngày 11/03/2024"
+      ],
+      "predicted": [
+        "Phẫu thuật nội soi cắt ruột thừa ngày 11/03/2024",
+        "kháng sinh, giảm đau, truyền dịch"
+      ]
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "field": "attending_physician",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct_null",
+      "confidence": 0.05,
+      "truth": null,
+      "predicted": null
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "field": "discharge_instructions",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.96,
+      "truth": "Tái khám sau 7 ngày tại Phòng khám Ngoại. Cắt chỉ vết mổ sau 7–10 ngày. Kiêng vận động mạnh trong 4 tuần. Đến viện ngay nếu sốt, đau bụng tăng hoặc vết mổ chảy dịch.",
+      "predicted": "Tái khám sau 7 ngày tại Phòng khám Ngoại. Cắt chỉ vết mổ sau 7–10 ngày. Kiêng vận động mạnh trong 4 tuần. Đến viện ngay nếu sốt, đau bụng tăng hoặc vết mổ chảy dịch."
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "field": "hospital_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.73,
+      "truth": "โรงพยาบาลสุขใจเวชการ",
+      "predicted": "โรงพยาบาลสุขใจเวชการ"
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.68,
+      "truth": "นายสมชาย ใจดี",
+      "predicted": "นายสมชาย ใจดี"
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "field": "admission_date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.73,
+      "truth": "2024-04-15",
+      "predicted": "2024-04-15"
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "field": "discharge_date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.72,
+      "truth": "2024-04-12",
+      "predicted": "2024-04-12"
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "field": "diagnosis",
+      "kind": "diagnosis",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.49,
+      "truth": {
+        "primary": "ไข้เลือดออกเดงกี (A91)",
+        "secondary": [
+          "ภาวะเกล็ดเลือดต่ำ (D69.6)"
+        ]
+      },
+      "predicted": {
+        "primary": "ไข้เลือดออกเดงกี (A91)",
+        "secondary": [
+          "ภาวะเกล็ดเลือดต่ำ (D69.6)"
+        ]
+      }
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "field": "procedures_performed",
+      "kind": "text_list",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.49,
+      "truth": [
+        "ให้สารน้ำทางหลอดเลือดดำ"
+      ],
+      "predicted": [
+        "ให้สารน้ำทางหลอดเลือดดำ"
+      ]
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "field": "attending_physician",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.71,
+      "truth": "นพ.วีระพงษ์ แสงทอง",
+      "predicted": "นพ.วิรยะพงษ์ แสงทอง"
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "field": "discharge_instructions",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.7,
+      "truth": "ดื่มน้ำอย่างน้อยวันละ 2 ลิตร งดยาแอสไพรินและยาแก้ปวดกลุ่ม NSAIDs นัดตรวจเกล็ดเลือดซ้ำในอีก 3 วัน หากมีเลือดออกผิดปกติ ปวดท้องมาก หรืออาเจียนต่อเนื่อง ให้กลับมาโรงพยาบาลทันที",
+      "predicted": "ดื่มน้ำอย่างน้อยวันละ 2 ลิตร งดยาแอลส์ไพรินและยาแก้ปวดกลุ่ม NSAIDs นัดตรวจเกล็ดเลือดซ้ำในอีก 3 วัน หากมีเลือดออกผิดปกติ ปวดท้องมาก หรืออาเจียนต่อเนื่อง ให้กลับมาโรงพยาบาลทันที"
+    },
+    {
+      "source": "07_lab_report_en.pdf",
+      "field": "lab_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": "Sunrise Diagnostics Laboratory",
+      "predicted": "Sunrise Diagnostics Laboratory"
+    },
+    {
+      "source": "07_lab_report_en.pdf",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "Margaret Lee Siew Ling",
+      "predicted": "Margaret Lee Siew Ling"
+    },
+    {
+      "source": "07_lab_report_en.pdf",
+      "field": "date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.97,
+      "truth": "2024-05-06",
+      "predicted": "2024-05-06"
+    },
+    {
+      "source": "07_lab_report_en.pdf",
+      "field": "tests",
+      "kind": "lab_tests",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.84,
+      "truth": [
+        {
+          "test_name": "Fasting Plasma Glucose",
+          "result": "7.8",
+          "unit": "mmol/L",
+          "reference_range": "3.9 - 5.5",
+          "flag": "high"
+        },
+        {
+          "test_name": "HbA1c",
+          "result": "7.2",
+          "unit": "%",
+          "reference_range": "4.0 - 5.6",
+          "flag": "high"
+        },
+        {
+          "test_name": "Total Cholesterol",
+          "result": "6.4",
+          "unit": "mmol/L",
+          "reference_range": "< 5.2",
+          "flag": "high"
+        },
+        {
+          "test_name": "LDL Cholesterol",
+          "result": "4.1",
+          "unit": "mmol/L",
+          "reference_range": "< 3.4",
+          "flag": null
+        },
+        {
+          "test_name": "HDL Cholesterol",
+          "result": "1.2",
+          "unit": "mmol/L",
+          "reference_range": "> 1.0",
+          "flag": null
+        },
+        {
+          "test_name": "Triglycerides",
+          "result": "1.6",
+          "unit": "mmol/L",
+          "reference_range": "< 1.7",
+          "flag": null
+        },
+        {
+          "test_name": "Creatinine",
+          "result": "68",
+          "unit": "µmol/L",
+          "reference_range": "45 - 90",
+          "flag": null
+        },
+        {
+          "test_name": "Haemoglobin",
+          "result": "11.2",
+          "unit": "g/dL",
+          "reference_range": "12.0 - 15.5",
+          "flag": "low"
+        }
+      ],
+      "predicted": [
+        {
+          "test_name": "Fasting Plasma Glucose",
+          "result": "7.8",
+          "unit": "mmol/L",
+          "reference_range": "3.9 - 5.5",
+          "flag": "high",
+          "flag_source": "printed"
+        },
+        {
+          "test_name": "HbA1c",
+          "result": "7.2",
+          "unit": "%",
+          "reference_range": "4.0 - 5.6",
+          "flag": "high",
+          "flag_source": "printed"
+        },
+        {
+          "test_name": "Total Cholesterol",
+          "result": "6.4",
+          "unit": "mmol/L",
+          "reference_range": "< 5.2",
+          "flag": "high",
+          "flag_source": "printed"
+        },
+        {
+          "test_name": "LDL Cholesterol",
+          "result": "4.1",
+          "unit": "mmol/L",
+          "reference_range": "< 3.4",
+          "flag": "high",
+          "flag_source": "derived"
+        },
+        {
+          "test_name": "HDL Cholesterol",
+          "result": "1.2",
+          "unit": "mmol/L",
+          "reference_range": "> 1.0",
+          "flag": "normal",
+          "flag_source": "derived"
+        },
+        {
+          "test_name": "Triglycerides",
+          "result": "1.6",
+          "unit": "mmol/L",
+          "reference_range": "< 1.7",
+          "flag": "normal",
+          "flag_source": "derived"
+        },
+        {
+          "test_name": "Creatinine",
+          "result": "68",
+          "unit": "µmol/L",
+          "reference_range": "45 - 90",
+          "flag": "normal",
+          "flag_source": "derived"
+        },
+        {
+          "test_name": "Haemoglobin",
+          "result": "11.2",
+          "unit": "g/dL",
+          "reference_range": "12.0 - 15.5",
+          "flag": "low",
+          "flag_source": "printed"
+        }
+      ]
+    },
+    {
+      "source": "08_lab_report_vi.jpg",
+      "field": "lab_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.73,
+      "truth": "TRUNG TÂM XÉT NGHIỆM Y KHOA LAM KIỀU",
+      "predicted": "TRUNG TÂM XÉT NGHIỆM Y KHOA LAM KIỀU"
+    },
+    {
+      "source": "08_lab_report_vi.jpg",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.73,
+      "truth": "LÊ VĂN TÙNG",
+      "predicted": "LÊ VĂN TÙNG"
+    },
+    {
+      "source": "08_lab_report_vi.jpg",
+      "field": "date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.71,
+      "truth": "2024-05-20",
+      "predicted": "2024-05-20"
+    },
+    {
+      "source": "08_lab_report_vi.jpg",
+      "field": "tests",
+      "kind": "lab_tests",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.49,
+      "truth": [
+        {
+          "test_name": "Glucose",
+          "result": "5,6",
+          "unit": "mmol/L",
+          "reference_range": "3,9 - 6,4",
+          "flag": null
+        },
+        {
+          "test_name": "Ure",
+          "result": "4,8",
+          "unit": "mmol/L",
+          "reference_range": "2,5 - 7,5",
+          "flag": null
+        },
+        {
+          "test_name": "Creatinin",
+          "result": "112",
+          "unit": "µmol/L",
+          "reference_range": "62 - 106",
+          "flag": "high"
+        },
+        {
+          "test_name": "AST (GOT)",
+          "result": "52",
+          "unit": "U/L",
+          "reference_range": "≤ 37",
+          "flag": "high"
+        },
+        {
+          "test_name": "ALT (GPT)",
+          "result": "61",
+          "unit": "U/L",
+          "reference_range": "≤ 40",
+          "flag": "high"
+        },
+        {
+          "test_name": "Acid uric",
+          "result": "395",
+          "unit": "µmol/L",
+          "reference_range": "202 - 416",
+          "flag": null
+        }
+      ],
+      "predicted": [
+        {
+          "test_name": "Glucose",
+          "result": "5,6",
+          "unit": "mmol/L",
+          "reference_range": "3,9 - 6,4",
+          "flag": "normal",
+          "flag_source": "derived"
+        },
+        {
+          "test_name": "Ure",
+          "result": "4,8",
+          "unit": "mmol/L",
+          "reference_range": "2,5 - 7,5",
+          "flag": "normal",
+          "flag_source": "derived"
+        },
+        {
+          "test_name": "Creatinin",
+          "result": "112",
+          "unit": "μmol/L",
+          "reference_range": "62 - 106",
+          "flag": "high",
+          "flag_source": "printed"
+        },
+        {
+          "test_name": "AST (GOT)",
+          "result": "52",
+          "unit": "U/L",
+          "reference_range": "≤ 37",
+          "flag": "high",
+          "flag_source": "printed"
+        },
+        {
+          "test_name": "ALT (GPT)",
+          "result": "61",
+          "unit": "U/L",
+          "reference_range": "≤ 40",
+          "flag": "high",
+          "flag_source": "printed"
+        },
+        {
+          "test_name": "Acid uric",
+          "result": "395",
+          "unit": "μmol/L",
+          "reference_range": "202 - 416",
+          "flag": "normal",
+          "flag_source": "derived"
+        }
+      ]
+    },
+    {
+      "source": "09_prescription_en.pdf",
+      "field": "doctor_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": "Dr. Priya Nair",
+      "predicted": "Dr. Priya Nair"
+    },
+    {
+      "source": "09_prescription_en.pdf",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": "Ryan Goh Jun Hao",
+      "predicted": "Ryan Goh Jun Hao"
+    },
+    {
+      "source": "09_prescription_en.pdf",
+      "field": "date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.98,
+      "truth": "2024-06-03",
+      "predicted": "2024-06-03"
+    },
+    {
+      "source": "09_prescription_en.pdf",
+      "field": "medications",
+      "kind": "medications",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.84,
+      "truth": [
+        {
+          "name": "Amoxicillin capsule",
+          "dosage": "500 mg (1 cap)",
+          "frequency": "TDS",
+          "duration": "5 days",
+          "quantity": "15 caps"
+        },
+        {
+          "name": "Paracetamol tablet",
+          "dosage": "1 g (2 tabs)",
+          "frequency": "QID PRN fever/pain",
+          "duration": "5 days",
+          "quantity": "40 tabs"
+        },
+        {
+          "name": "Loratadine tablet",
+          "dosage": "10 mg (1 tab)",
+          "frequency": "OD",
+          "duration": "7 days",
+          "quantity": "7 tabs"
+        },
+        {
+          "name": "Chlorhexidine 0.2% mouthwash",
+          "dosage": "10 ml gargle",
+          "frequency": "BD",
+          "duration": "7 days",
+          "quantity": "1 btl"
+        }
+      ],
+      "predicted": [
+        {
+          "name": "Amoxicillin capsule",
+          "dosage": "500 mg (1 cap)",
+          "frequency": "TDS",
+          "duration": "5 days",
+          "quantity": 15.0
+        },
+        {
+          "name": "Paracetamol tablet",
+          "dosage": "1 g (2 tabs)",
+          "frequency": "QID PRN fever/pain",
+          "duration": "5 days",
+          "quantity": 40.0
+        },
+        {
+          "name": "Loratadine tablet",
+          "dosage": "10 mg (1 tab)",
+          "frequency": "OD",
+          "duration": "7 days",
+          "quantity": 7.0
+        },
+        {
+          "name": "Chlorhexidine 0.2% mouthwash",
+          "dosage": "10 ml gargle",
+          "frequency": "BD",
+          "duration": "7 days",
+          "quantity": 1.0
+        }
+      ]
+    },
+    {
+      "source": "10_prescription_vi.png",
+      "field": "doctor_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.71,
+      "truth": "BS. Đỗ Thị Thu Trang",
+      "predicted": "BS. Đỗ Thị Thu Trang"
+    },
+    {
+      "source": "10_prescription_vi.png",
+      "field": "patient_name",
+      "kind": "text",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.71,
+      "truth": "Võ Minh Khang",
+      "predicted": "Võ Minh Khang"
+    },
+    {
+      "source": "10_prescription_vi.png",
+      "field": "date",
+      "kind": "date",
+      "score": 1.0,
+      "outcome": "correct",
+      "confidence": 0.71,
+      "truth": "2024-06-12",
+      "predicted": "2024-06-12"
+    },
+    {
+      "source": "10_prescription_vi.png",
+      "field": "medications",
+      "kind": "medications",
+      "score": 0.924,
+      "outcome": "correct",
+      "confidence": 0.49,
+      "truth": [
+        {
+          "name": "Augmentin 625mg",
+          "dosage": "1 viên/lần",
+          "frequency": "Uống ngày 2 lần, sau ăn",
+          "duration": "7 ngày",
+          "quantity": "14 viên"
+        },
+        {
+          "name": "Alphachymotrypsin 4,2mg",
+          "dosage": "2 viên/lần",
+          "frequency": "Uống ngày 3 lần",
+          "duration": "5 ngày",
+          "quantity": "30 viên"
+        },
+        {
+          "name": "Paracetamol 500mg",
+          "dosage": "1 viên/lần",
+          "frequency": "khi sốt > 38,5°C, cách 4-6 giờ",
+          "duration": "3 ngày",
+          "quantity": "10 viên"
+        }
+      ],
+      "predicted": [
+        {
+          "name": "Augmentin 625mg",
+          "dosage": "1 viên/lần",
+          "frequency": "2 lần",
+          "duration": "7 ngày",
+          "quantity": 14.0
+        },
+        {
+          "name": "Alphachymotrypsin 4,2mg",
+          "dosage": "2 viên/lần",
+          "frequency": "3 lần",
+          "duration": "5 ngày",
+          "quantity": 30.0
+        },
+        {
+          "name": "Paracetamol 500mg",
+          "dosage": "1 viên/lần",
+          "frequency": "khi sốt > 38,5°C, cách 4-6 giờ",
+          "duration": "3 ngày",
+          "quantity": 10.0
+        }
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "source": "01_receipt_en.pdf",
+      "expected": [],
+      "raised": [],
+      "caught": [],
+      "missed": [],
+      "extra": []
+    },
+    {
+      "source": "02_receipt_vi.pdf",
+      "expected": [
+        "total_mismatch"
+      ],
+      "raised": [
+        "total_mismatch"
+      ],
+      "caught": [
+        "total_mismatch"
+      ],
+      "missed": [],
+      "extra": []
+    },
+    {
+      "source": "03_receipt_th.pdf",
+      "expected": [],
+      "raised": [],
+      "caught": [],
+      "missed": [],
+      "extra": []
+    },
+    {
+      "source": "04_discharge_summary_en.pdf",
+      "expected": [],
+      "raised": [],
+      "caught": [],
+      "missed": [],
+      "extra": []
+    },
+    {
+      "source": "05_discharge_summary_vi.pdf",
+      "expected": [],
+      "raised": [],
+      "caught": [],
+      "missed": [],
+      "extra": []
+    },
+    {
+      "source": "06_discharge_summary_th.png",
+      "expected": [
+        "date_order"
+      ],
+      "raised": [
+        "date_order"
+      ],
+      "caught": [
+        "date_order"
+      ],
+      "missed": [],
+      "extra": []
+    },
+    {
+      "source": "07_lab_report_en.pdf",
+      "expected": [],
+      "raised": [],
+      "caught": [],
+      "missed": [],
+      "extra": []
+    },
+    {
+      "source": "08_lab_report_vi.jpg",
+      "expected": [],
+      "raised": [],
+      "caught": [],
+      "missed": [],
+      "extra": []
+    },
+    {
+      "source": "09_prescription_en.pdf",
+      "expected": [],
+      "raised": [],
+      "caught": [],
+      "missed": [],
+      "extra": []
+    },
+    {
+      "source": "10_prescription_vi.png",
+      "expected": [],
+      "raised": [],
+      "caught": [],
+      "missed": [],
+      "extra": []
+    }
+  ]
+}

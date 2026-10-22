@@ -1,0 +1,21 @@
+{
+  "source": "07_lab_report_en.pdf",
+  "document_type": "lab_report",
+  "language": "en",
+  "fields": {
+    "lab_name": "Sunrise Diagnostics Laboratory",
+    "patient_name": "Margaret Lee Siew Ling",
+    "date": "2024-05-06",
+    "tests": [
+      {"test_name": "Fasting Plasma Glucose", "result": "7.8", "unit": "mmol/L", "reference_range": "3.9 - 5.5", "flag": "high"},
+      {"test_name": "HbA1c", "result": "7.2", "unit": "%", "reference_range": "4.0 - 5.6", "flag": "high"},
+      {"test_name": "Total Cholesterol", "result": "6.4", "unit": "mmol/L", "reference_range": "< 5.2", "flag": "high"},
+      {"test_name": "LDL Cholesterol", "result": "4.1", "unit": "mmol/L", "reference_range": "< 3.4", "flag": null},
+      {"test_name": "HDL Cholesterol", "result": "1.2", "unit": "mmol/L", "reference_range": "> 1.0", "flag": null},
+      {"test_name": "Triglycerides", "result": "1.6", "unit": "mmol/L", "reference_range": "< 1.7", "flag": null},
+      {"test_name": "Creatinine", "result": "68", "unit": "µmol/L", "reference_range": "45 - 90", "flag": null},
+      {"test_name": "Haemoglobin", "result": "11.2", "unit": "g/dL", "reference_range": "12.0 - 15.5", "flag": "low"}
+    ]
+  },
+  "notes": "Clean digital PDF. Date: 'Collected 06 May 2024 08:10' and 'Reported 06 May 2024 14:32' are the same day, so the date is recorded as the collection date 2024-05-06. Flags are printed only as H or L: Fasting Plasma Glucose H, HbA1c H, Total Cholesterol H, Haemoglobin L. Rows with no printed flag are recorded as null, not 'normal', since the instruction is to use null when the document shows no flag. LDL Cholesterol 4.1 is ABOVE its '< 3.4' reference range but carries NO flag (flag-vs-range inconsistency; validation should warn, not invent a flag). HDL 1.2 (> 1.0), Triglycerides 1.6 (< 1.7) and Creatinine 68 (45-90) are in range, flag null. Results kept as printed strings. Reference ranges verbatim. DOB 11/02/1971, sex F, lab number and requesting doctor are not schema fields."
+}

@@ -1,0 +1,82 @@
+{
+  "document_type": "prescription",
+  "confidence": 1.0,
+  "fields": {
+    "doctor_name": {
+      "value": "Dr. Priya Nair",
+      "confidence": 0.98
+    },
+    "patient_name": {
+      "value": "Ryan Goh Jun Hao",
+      "confidence": 0.98
+    },
+    "date": {
+      "value": "2024-06-03",
+      "confidence": 0.98
+    },
+    "medications": {
+      "value": [
+        {
+          "name": "Amoxicillin capsule",
+          "dosage": "500 mg (1 cap)",
+          "frequency": "TDS",
+          "duration": "5 days",
+          "quantity": 15.0
+        },
+        {
+          "name": "Paracetamol tablet",
+          "dosage": "1 g (2 tabs)",
+          "frequency": "QID PRN fever/pain",
+          "duration": "5 days",
+          "quantity": 40.0
+        },
+        {
+          "name": "Loratadine tablet",
+          "dosage": "10 mg (1 tab)",
+          "frequency": "OD",
+          "duration": "7 days",
+          "quantity": 7.0
+        },
+        {
+          "name": "Chlorhexidine 0.2% mouthwash",
+          "dosage": "10 ml gargle",
+          "frequency": "BD",
+          "duration": "7 days",
+          "quantity": 1.0
+        }
+      ],
+      "confidence": 0.84
+    }
+  },
+  "validation_errors": [],
+  "meta": {
+    "source": "09_prescription_en.pdf",
+    "backend": "mlx",
+    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
+    "pages": 1,
+    "has_text_layer": true,
+    "classification_scores": {
+      "receipt": 0.0,
+      "discharge_summary": 0.0,
+      "lab_report": 0.0,
+      "prescription": 0.98
+    },
+    "language": "en",
+    "classify_attempts": 1,
+    "extract_attempts": 1,
+    "generated_tokens": 306,
+    "grounding": {
+      "doctor_name": "exact",
+      "patient_name": "exact",
+      "date": "exact",
+      "medications": "exact"
+    },
+    "timings": {
+      "ingest_s": 0.04,
+      "classify_s": 109.29,
+      "extract_s": 33.36,
+      "postprocess_s": 0.003,
+      "total_s": 142.68
+    }
+  }
+}

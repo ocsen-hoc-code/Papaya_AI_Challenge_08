@@ -1,0 +1,82 @@
+{
+  "document_type": "discharge_summary",
+  "confidence": 1.0,
+  "fields": {
+    "hospital_name": {
+      "value": "Mount Elara Medical Centre",
+      "confidence": 0.98
+    },
+    "patient_name": {
+      "value": "Aisha binti Rahman",
+      "confidence": 0.97
+    },
+    "admission_date": {
+      "value": "2024-02-03",
+      "confidence": 0.97
+    },
+    "discharge_date": {
+      "value": "2024-02-09",
+      "confidence": 0.97
+    },
+    "diagnosis": {
+      "value": {
+        "primary": "Lobar pneumonia, right lower lobe (J18.1)",
+        "secondary": [
+          "Type 2 diabetes mellitus without complications (E11.9)",
+          "Essential hypertension (I10)"
+        ]
+      },
+      "confidence": 0.84
+    },
+    "procedures_performed": {
+      "value": [
+        "Chest radiograph, PA and lateral views",
+        "Diagnostic thoracentesis, right side"
+      ],
+      "confidence": 0.84
+    },
+    "attending_physician": {
+      "value": "Dr. Kevin Lim Chee Keong",
+      "confidence": 0.97
+    },
+    "discharge_instructions": {
+      "value": "1. Complete oral amoxicillin-clavulanate 625 mg three times daily for 5 more days.\n2. Check blood glucose twice daily and continue metformin 500 mg twice daily.\n3. Return to the Emergency Department if fever above 38.5°C, shortness of breath or chest pain.\n4. Follow up at the Respiratory Clinic in 2 weeks with a repeat chest X-ray.",
+      "confidence": 0.97
+    }
+  },
+  "validation_errors": [],
+  "meta": {
+    "source": "04_discharge_summary_en.pdf",
+    "backend": "mlx",
+    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
+    "pages": 1,
+    "has_text_layer": true,
+    "classification_scores": {
+      "receipt": 0.0,
+      "discharge_summary": 0.98,
+      "lab_report": 0.0,
+      "prescription": 0.0
+    },
+    "language": "en",
+    "classify_attempts": 1,
+    "extract_attempts": 1,
+    "generated_tokens": 500,
+    "grounding": {
+      "hospital_name": "exact",
+      "patient_name": "exact",
+      "admission_date": "exact",
+      "discharge_date": "exact",
+      "diagnosis": "exact",
+      "procedures_performed": "exact",
+      "attending_physician": "exact",
+      "discharge_instructions": "exact"
+    },
+    "timings": {
+      "ingest_s": 0.19,
+      "classify_s": 22.86,
+      "extract_s": 89.67,
+      "postprocess_s": 0.003,
+      "total_s": 112.73
+    }
+  }
+}

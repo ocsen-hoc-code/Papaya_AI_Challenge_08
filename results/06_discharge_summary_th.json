@@ -1,0 +1,93 @@
+{
+  "document_type": "discharge_summary",
+  "confidence": 1.0,
+  "fields": {
+    "hospital_name": {
+      "value": "โรงพยาบาลสุขใจเวชการ",
+      "confidence": 0.73
+    },
+    "patient_name": {
+      "value": "นายสมชาย ใจดี",
+      "confidence": 0.68
+    },
+    "admission_date": {
+      "value": "2024-04-15",
+      "confidence": 0.73
+    },
+    "discharge_date": {
+      "value": "2024-04-12",
+      "confidence": 0.72
+    },
+    "diagnosis": {
+      "value": {
+        "primary": "ไข้เลือดออกเดงกี (A91)",
+        "secondary": [
+          "ภาวะเกล็ดเลือดต่ำ (D69.6)"
+        ]
+      },
+      "confidence": 0.49
+    },
+    "procedures_performed": {
+      "value": [
+        "ให้สารน้ำทางหลอดเลือดดำ"
+      ],
+      "confidence": 0.49
+    },
+    "attending_physician": {
+      "value": "นพ.วิรยะพงษ์ แสงทอง",
+      "confidence": 0.71
+    },
+    "discharge_instructions": {
+      "value": "ดื่มน้ำอย่างน้อยวันละ 2 ลิตร งดยาแอลส์ไพรินและยาแก้ปวดกลุ่ม NSAIDs นัดตรวจเกล็ดเลือดซ้ำในอีก 3 วัน หากมีเลือดออกผิดปกติ ปวดท้องมาก หรืออาเจียนต่อเนื่อง ให้กลับมาโรงพยาบาลทันที",
+      "confidence": 0.7
+    }
+  },
+  "validation_errors": [
+    {
+      "field": "discharge_date",
+      "code": "date_order",
+      "message": "discharge_date 2024-04-12 is before admission_date 2024-04-15",
+      "severity": "error"
+    },
+    {
+      "field": "admission_date",
+      "code": "fields_swapped_by_label",
+      "message": "Admission and discharge dates were swapped to match their printed labels (admission evidence: 'วันที่รับไว้ในโรงพยาบาล 15/04/2567 เวลา 21:40 น.'; discharge evidence: 'วันที่ถึงหน่วย 12/04/2567 เวลา 10:15 น.')",
+      "severity": "warning"
+    }
+  ],
+  "meta": {
+    "source": "06_discharge_summary_th.png",
+    "backend": "mlx",
+    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
+    "pages": 1,
+    "has_text_layer": false,
+    "classification_scores": {
+      "receipt": 0.0,
+      "discharge_summary": 0.95,
+      "lab_report": 0.0,
+      "prescription": 0.0
+    },
+    "language": "th",
+    "classify_attempts": 1,
+    "extract_attempts": 1,
+    "generated_tokens": 579,
+    "grounding": {
+      "hospital_name": "no_reference",
+      "patient_name": "no_reference",
+      "admission_date": "no_reference",
+      "discharge_date": "no_reference",
+      "diagnosis": "no_reference",
+      "procedures_performed": "no_reference",
+      "attending_physician": "no_reference",
+      "discharge_instructions": "no_reference"
+    },
+    "timings": {
+      "ingest_s": 0.09,
+      "classify_s": 21.28,
+      "extract_s": 147.61,
+      "postprocess_s": 0.001,
+      "total_s": 168.98
+    }
+  }
+}

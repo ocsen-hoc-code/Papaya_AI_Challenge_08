@@ -1,0 +1,20 @@
+{
+  "source": "02_receipt_vi.pdf",
+  "document_type": "receipt",
+  "language": "vi",
+  "fields": {
+    "hospital_name": "BỆNH VIỆN ĐA KHOA THANH VÂN",
+    "patient_name": "Trần Thị Mai Hương",
+    "date": "2024-04-08",
+    "items": [
+      {"description": "Khám chuyên khoa Tiêu hóa", "quantity": 1, "unit_price": 300000.0, "total": 300000.0},
+      {"description": "Nội soi dạ dày - tá tràng", "quantity": 1, "unit_price": 1250000.0, "total": 1250000.0},
+      {"description": "Test hơi thở tìm Helicobacter pylori", "quantity": 1, "unit_price": 650000.0, "total": 650000.0},
+      {"description": "Siêu âm ổ bụng tổng quát", "quantity": 1, "unit_price": 280000.0, "total": 280000.0},
+      {"description": "Esomeprazol 40mg (viên)", "quantity": 28, "unit_price": 9500.0, "total": 266000.0}
+    ],
+    "grand_total": 2938000.0,
+    "payment_method": "Tiền mặt"
+  },
+  "notes": "TOTALS MISMATCH (deliberate validation case). Line totals sum to 300,000 + 1,250,000 + 650,000 + 280,000 + 266,000 = 2,746,000, but the printed 'Tổng cộng' is 2.938.000 (2,938,000). Difference 192,000 = about 6.5% of the printed total, above the 5% threshold, so validation must flag it. The amount-in-words line ('Hai triệu chín trăm ba mươi tám nghìn đồng chẵn') agrees with the printed total, not the line items. grand_total is recorded AS PRINTED (2938000.0). Line 5 arithmetic is correct (28 x 9.500 = 266.000). Vietnamese '.' is a thousands separator (1.250.000 = 1250000). Date 'Ngày 08 tháng 04 năm 2024' is day-first -> 2024-04-08. Hospital name printed in the header. The receipt-issuer line 'Ký hiệu' and serial numbers are not schema fields. Clean digital PDF."
+}

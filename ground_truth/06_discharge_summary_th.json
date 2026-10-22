@@ -1,0 +1,23 @@
+{
+  "source": "06_discharge_summary_th.png",
+  "document_type": "discharge_summary",
+  "language": "th",
+  "fields": {
+    "hospital_name": "โรงพยาบาลสุขใจเวชการ",
+    "patient_name": "นายสมชาย ใจดี",
+    "admission_date": "2024-04-15",
+    "discharge_date": "2024-04-12",
+    "diagnosis": {
+      "primary": "ไข้เลือดออกเดงกี (A91)",
+      "secondary": [
+        "ภาวะเกล็ดเลือดต่ำ (D69.6)"
+      ]
+    },
+    "procedures_performed": [
+      "ให้สารน้ำทางหลอดเลือดดำ"
+    ],
+    "attending_physician": "นพ.วีระพงษ์ แสงทอง",
+    "discharge_instructions": "ดื่มน้ำอย่างน้อยวันละ 2 ลิตร งดยาแอสไพรินและยาแก้ปวดกลุ่ม NSAIDs นัดตรวจเกล็ดเลือดซ้ำในอีก 3 วัน หากมีเลือดออกผิดปกติ ปวดท้องมาก หรืออาเจียนต่อเนื่อง ให้กลับมาโรงพยาบาลทันที"
+  },
+  "notes": "DATE ORDER ERROR (deliberate validation case): discharge_date (12/04/2567 = 2024-04-12) is BEFORE admission_date (15/04/2567 = 2024-04-15). Record as printed, do not swap. Validation should flag an impossible sequence. Thai Buddhist-era years (2567) converted by -543; dates are day-first. Photo of a printed form (PNG, no text layer), slight shadow and skew, still legible. Diagnosis 'ไข้เลือดออกเดงกี (A91)' and comorbidity 'ภาวะเกล็ดเลือดต่ำ (D69.6)' are kept as printed. The comorbidity line is recorded as secondary. Procedure: 'ให้สารน้ำทางหลอดเลือดดำ' (IV fluid). attending_physician from the 'แพทย์ผู้รักษา' (treating physician) signature line, parentheses and spacing stripped; licence no. ว.34567 is not a field. Patient honorific 'นาย' kept as printed. Course values (platelets 38,000 and 96,000 /µL) and HN/AN numbers are not schema fields. The discharge_instructions combine the single 'คำแนะนำเมื่อกลับบ้าน' paragraph."
+}

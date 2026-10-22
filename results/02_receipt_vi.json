@@ -1,0 +1,101 @@
+{
+  "document_type": "receipt",
+  "confidence": 1.0,
+  "fields": {
+    "hospital_name": {
+      "value": "BỆNH VIỆN ĐA KHOA THANH VÂN",
+      "confidence": 0.98
+    },
+    "patient_name": {
+      "value": "Trần Thị Mai Hương",
+      "confidence": 0.97
+    },
+    "date": {
+      "value": "2024-04-08",
+      "confidence": 0.97
+    },
+    "items": {
+      "value": [
+        {
+          "description": "Khám chuyên khoa Tiêu hóa",
+          "quantity": 1.0,
+          "unit_price": 300000.0,
+          "total": 300000.0
+        },
+        {
+          "description": "Nội soi dạ dày - tá tràng",
+          "quantity": 1.0,
+          "unit_price": 1250000.0,
+          "total": 1250000.0
+        },
+        {
+          "description": "Test hơi thở tìm Helicobacter pylori",
+          "quantity": 1.0,
+          "unit_price": 650000.0,
+          "total": 650000.0
+        },
+        {
+          "description": "Siêu âm ổ bụng tổng quát",
+          "quantity": 1.0,
+          "unit_price": 280000.0,
+          "total": 280000.0
+        },
+        {
+          "description": "Esomeprazol 40mg (viên)",
+          "quantity": 28.0,
+          "unit_price": 9500.0,
+          "total": 266000.0
+        }
+      ],
+      "confidence": 0.84
+    },
+    "grand_total": {
+      "value": 2938000.0,
+      "confidence": 0.98
+    },
+    "payment_method": {
+      "value": "Tiền mặt",
+      "confidence": 0.97
+    }
+  },
+  "validation_errors": [
+    {
+      "field": "grand_total",
+      "code": "total_mismatch",
+      "message": "item totals sum to 2,746,000.00 but grand_total is 2,938,000.00 (6.5% difference, limit 5%)",
+      "severity": "error"
+    }
+  ],
+  "meta": {
+    "source": "02_receipt_vi.pdf",
+    "backend": "mlx",
+    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
+    "pages": 1,
+    "has_text_layer": true,
+    "classification_scores": {
+      "receipt": 0.98,
+      "discharge_summary": 0.0,
+      "lab_report": 0.0,
+      "prescription": 0.0
+    },
+    "language": "vi",
+    "classify_attempts": 1,
+    "extract_attempts": 1,
+    "generated_tokens": 469,
+    "grounding": {
+      "hospital_name": "exact",
+      "patient_name": "exact",
+      "date": "exact",
+      "items": "exact",
+      "grand_total": "exact",
+      "payment_method": "exact"
+    },
+    "timings": {
+      "ingest_s": 0.24,
+      "classify_s": 44.46,
+      "extract_s": 132.31,
+      "postprocess_s": 0.002,
+      "total_s": 177.01
+    }
+  }
+}

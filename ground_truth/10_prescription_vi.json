@@ -1,0 +1,16 @@
+{
+  "source": "10_prescription_vi.png",
+  "document_type": "prescription",
+  "language": "vi",
+  "fields": {
+    "doctor_name": "BS. Đỗ Thị Thu Trang",
+    "patient_name": "Võ Minh Khang",
+    "date": "2024-06-12",
+    "medications": [
+      {"name": "Augmentin 625mg", "dosage": "1 viên/lần", "frequency": "Uống ngày 2 lần, sau ăn", "duration": "7 ngày", "quantity": "14 viên"},
+      {"name": "Alphachymotrypsin 4,2mg", "dosage": "2 viên/lần", "frequency": "Uống ngày 3 lần", "duration": "5 ngày", "quantity": "30 viên"},
+      {"name": "Paracetamol 500mg", "dosage": "1 viên/lần", "frequency": "khi sốt > 38,5°C, cách 4-6 giờ", "duration": "3 ngày", "quantity": "10 viên"}
+    ]
+  },
+  "notes": "Handwritten prescription on a photo (PNG, no text layer). Handwriting is clear. Doctor name from the signature line 'BS. Đỗ Thị Thu Trang'. Date '12 tháng 6 năm 2024' (day-first) -> 2024-06-12. Per-medication dose, frequency and duration are split from the instruction lines: Augmentin 1 viên x 2 lần/ngày x 7 ngày = 14 viên (consistent); Alphachymotrypsin 2 viên x 3 lần/ngày x 5 ngày = 30 viên (consistent); Paracetamol 1 viên per dose, as needed when fever > 38,5°C, 4-6 hours apart, x 3 ngày = 10 viên. Frequency is kept as printed Vietnamese text including the 'sau ăn' instruction. Medication names keep their printed strengths, which are part of the name. Printed clinic name 'PHÒNG KHÁM ĐA KHOA HỒNG LAM' is a clinic, not a schema field. Diagnosis 'Viêm họng cấp (J02.9)', patient age 27, sex, address and the 'Lời dặn' advice are not schema fields. Decimal comma in '4,2mg' and '38,5°C' is kept as printed."
+}

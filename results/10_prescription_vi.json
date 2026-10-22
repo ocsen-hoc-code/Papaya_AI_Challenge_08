@@ -1,0 +1,75 @@
+{
+  "document_type": "prescription",
+  "confidence": 1.0,
+  "fields": {
+    "doctor_name": {
+      "value": "BS. Đỗ Thị Thu Trang",
+      "confidence": 0.71
+    },
+    "patient_name": {
+      "value": "Võ Minh Khang",
+      "confidence": 0.71
+    },
+    "date": {
+      "value": "2024-06-12",
+      "confidence": 0.71
+    },
+    "medications": {
+      "value": [
+        {
+          "name": "Augmentin 625mg",
+          "dosage": "1 viên/lần",
+          "frequency": "2 lần",
+          "duration": "7 ngày",
+          "quantity": 14.0
+        },
+        {
+          "name": "Alphachymotrypsin 4,2mg",
+          "dosage": "2 viên/lần",
+          "frequency": "3 lần",
+          "duration": "5 ngày",
+          "quantity": 30.0
+        },
+        {
+          "name": "Paracetamol 500mg",
+          "dosage": "1 viên/lần",
+          "frequency": "khi sốt > 38,5°C, cách 4-6 giờ",
+          "duration": "3 ngày",
+          "quantity": 10.0
+        }
+      ],
+      "confidence": 0.49
+    }
+  },
+  "validation_errors": [],
+  "meta": {
+    "source": "10_prescription_vi.png",
+    "backend": "mlx",
+    "model_id": "mlx-community/Qwen3-VL-8B-Instruct-4bit",
+    "pages": 1,
+    "has_text_layer": false,
+    "classification_scores": {
+      "receipt": 0.0,
+      "discharge_summary": 0.0,
+      "lab_report": 0.0,
+      "prescription": 0.98
+    },
+    "language": "vi",
+    "classify_attempts": 1,
+    "extract_attempts": 1,
+    "generated_tokens": 297,
+    "grounding": {
+      "doctor_name": "no_reference",
+      "patient_name": "no_reference",
+      "date": "no_reference",
+      "medications": "no_reference"
+    },
+    "timings": {
+      "ingest_s": 0.06,
+      "classify_s": 81.25,
+      "extract_s": 46.48,
+      "postprocess_s": 0.002,
+      "total_s": 127.79
+    }
+  }
+}

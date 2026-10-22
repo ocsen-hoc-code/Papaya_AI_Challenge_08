@@ -1,0 +1,23 @@
+{
+  "source": "05_discharge_summary_vi.pdf",
+  "document_type": "discharge_summary",
+  "language": "vi",
+  "fields": {
+    "hospital_name": "BỆNH VIỆN ĐA KHOA LAM GIANG",
+    "patient_name": "PHẠM QUỐC BẢO",
+    "admission_date": "2024-03-11",
+    "discharge_date": "2024-03-18",
+    "diagnosis": {
+      "primary": "Viêm ruột thừa cấp (K35.8)",
+      "secondary": [
+        "Thiếu máu nhẹ (D64.9)"
+      ]
+    },
+    "procedures_performed": [
+      "Phẫu thuật nội soi cắt ruột thừa ngày 11/03/2024"
+    ],
+    "attending_physician": null,
+    "discharge_instructions": "Tái khám sau 7 ngày tại Phòng khám Ngoại. Cắt chỉ vết mổ sau 7–10 ngày. Kiêng vận động mạnh trong 4 tuần. Đến viện ngay nếu sốt, đau bụng tăng hoặc vết mổ chảy dịch."
+  },
+  "notes": "DELIBERATE NULL CASE: attending_physician is NULL. The 'TRƯỞNG KHOA' (head of department) signature block has no printed name. The only named signatory is 'BS.CKII Lương Văn Thịnh' under 'GIÁM ĐỐC' (director, with stamp). That is not the attending physician, so the pipeline must not fill it in. Admission 'Vào viện lúc 14 giờ 20 phút, ngày 11 tháng 03 năm 2024' -> 2024-03-11; discharge 'ngày 18 tháng 03 năm 2024' -> 2024-03-18 (day-first). Procedures: the printed 'Phương pháp điều trị' line reads 'Phẫu thuật nội soi cắt ruột thừa ngày 11/03/2024; kháng sinh, giảm đau, truyền dịch'. Only the surgery is recorded as a procedure. The antibiotics, analgesia and IV fluids are treatments, not procedures; a grader that counts them differently should treat this as a judgement call. Secondary diagnosis is the comorbidity 'Bệnh kèm theo'. discharge_instructions is the 'Ghi chú' line. Patient name printed in capitals. Printed header 'SỞ Y TẾ' sits above the hospital name, which is the hospital itself. Clean digital PDF with a red stamp overlay on the director signature (does not cover any field). Not schema fields: age 34, BHYT card, storage number."
+}

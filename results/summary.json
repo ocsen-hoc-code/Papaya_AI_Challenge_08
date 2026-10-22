@@ -1,0 +1,90 @@
+[
+  {
+    "source": "01_receipt_en.pdf",
+    "document_type": "receipt",
+    "confidence": 1.0,
+    "errors": [],
+    "warnings": [],
+    "seconds": 144.88
+  },
+  {
+    "source": "02_receipt_vi.pdf",
+    "document_type": "receipt",
+    "confidence": 1.0,
+    "errors": [
+      "total_mismatch"
+    ],
+    "warnings": [],
+    "seconds": 177.01
+  },
+  {
+    "source": "03_receipt_th.pdf",
+    "document_type": "receipt",
+    "confidence": 1.0,
+    "errors": [],
+    "warnings": [],
+    "seconds": 79.06
+  },
+  {
+    "source": "04_discharge_summary_en.pdf",
+    "document_type": "discharge_summary",
+    "confidence": 1.0,
+    "errors": [],
+    "warnings": [],
+    "seconds": 112.73
+  },
+  {
+    "source": "05_discharge_summary_vi.pdf",
+    "document_type": "discharge_summary",
+    "confidence": 1.0,
+    "errors": [],
+    "warnings": [
+      "role_mismatch"
+    ],
+    "seconds": 132.76
+  },
+  {
+    "source": "06_discharge_summary_th.png",
+    "document_type": "discharge_summary",
+    "confidence": 1.0,
+    "errors": [
+      "date_order"
+    ],
+    "warnings": [
+      "fields_swapped_by_label"
+    ],
+    "seconds": 168.98
+  },
+  {
+    "source": "07_lab_report_en.pdf",
+    "document_type": "lab_report",
+    "confidence": 1.0,
+    "errors": [],
+    "warnings": [],
+    "seconds": 175.29
+  },
+  {
+    "source": "08_lab_report_vi.jpg",
+    "document_type": "lab_report",
+    "confidence": 1.0,
+    "errors": [],
+    "warnings": [],
+    "seconds": 174.15
+  },
+  {
+    "source": "09_prescription_en.pdf",
+    "document_type": "prescription",
+    "confidence": 1.0,
+    "errors": [],
+    "warnings": [],
+    "seconds": 142.68
+  },
+  {
+    "source": "10_prescription_vi.png",
+    "document_type": "prescription",
+    "confidence": 1.0,
+    "errors": [],
+    "warnings": [],
+    "seconds": 127.79
+  }
+]

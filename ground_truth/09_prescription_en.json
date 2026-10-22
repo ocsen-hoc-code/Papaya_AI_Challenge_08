@@ -1,0 +1,17 @@
+{
+  "source": "09_prescription_en.pdf",
+  "document_type": "prescription",
+  "language": "en",
+  "fields": {
+    "doctor_name": "Dr. Priya Nair",
+    "patient_name": "Ryan Goh Jun Hao",
+    "date": "2024-06-03",
+    "medications": [
+      {"name": "Amoxicillin capsule", "dosage": "500 mg (1 cap)", "frequency": "TDS", "duration": "5 days", "quantity": "15 caps"},
+      {"name": "Paracetamol tablet", "dosage": "1 g (2 tabs)", "frequency": "QID PRN fever/pain", "duration": "5 days", "quantity": "40 tabs"},
+      {"name": "Loratadine tablet", "dosage": "10 mg (1 tab)", "frequency": "OD", "duration": "7 days", "quantity": "7 tabs"},
+      {"name": "Chlorhexidine 0.2% mouthwash", "dosage": "10 ml gargle", "frequency": "BD", "duration": "7 days", "quantity": "1 btl"}
+    ]
+  },
+  "notes": "Clean digital PDF, fully legible. Doctor name taken from the 'Dr. Priya Nair' signature line; the printed credentials (MBBS (S'pore), GDFM, MCR No. M71842Z) are not part of the name. Date '03 Jun 2024' -> 2024-06-03. Allergies NKDA and Diagnosis 'Acute tonsillitis' are printed but have NO schema field; they are ignored and must not appear in the medication fields. Column mapping from the rendered table: Medication | Dose | Frequency | Duration | Qty. Medication 4 name spans two lines and is joined ('Chlorhexidine 0.2% mouthwash'). Quantities kept as printed strings including the unit ('15 caps', '1 btl'). Paracetamol frequency 'QID PRN fever/pain' is verbatim. Patient age 34 / M, ID, RX number are not schema fields."
+}

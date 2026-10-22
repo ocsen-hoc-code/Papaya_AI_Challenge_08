@@ -1,0 +1,25 @@
+{
+  "source": "04_discharge_summary_en.pdf",
+  "document_type": "discharge_summary",
+  "language": "en",
+  "fields": {
+    "hospital_name": "Mount Elara Medical Centre",
+    "patient_name": "Aisha binti Rahman",
+    "admission_date": "2024-02-03",
+    "discharge_date": "2024-02-09",
+    "diagnosis": {
+      "primary": "Lobar pneumonia, right lower lobe (J18.1)",
+      "secondary": [
+        "Type 2 diabetes mellitus without complications (E11.9)",
+        "Essential hypertension (I10)"
+      ]
+    },
+    "procedures_performed": [
+      "Chest radiograph, PA and lateral views",
+      "Diagnostic thoracentesis, right side"
+    ],
+    "attending_physician": "Dr. Kevin Lim Chee Keong",
+    "discharge_instructions": "1. Complete oral amoxicillin-clavulanate 625 mg three times daily for 5 more days. 2. Check blood glucose twice daily and continue metformin 500 mg twice daily. 3. Return to the Emergency Department if fever above 38.5°C, shortness of breath or chest pain. 4. Follow up at the Respiratory Clinic in 2 weeks with a repeat chest X-ray."
+  },
+  "notes": "Clean digital PDF, fully legible. Dates are DD-Mon-YYYY (English), admission 03-Feb-2024 and discharge 09-Feb-2024, a valid sequence. Diagnoses kept verbatim including the ICD-10 code in parentheses, as printed. Secondary diagnoses are the two bullet items. Procedures are the two bullets. discharge_instructions is the numbered list joined into one string. attending_physician is the signatory marked 'Attending Physician'. Not schema fields and ignored: MRN, date of birth, sex, ward, hospital course (IV ceftriaxone, azithromycin etc.). Medications named inside the instructions (amoxicillin-clavulanate, metformin) are not separate fields."
+}

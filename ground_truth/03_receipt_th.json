@@ -1,0 +1,19 @@
+{
+  "source": "03_receipt_th.pdf",
+  "document_type": "receipt",
+  "language": "th",
+  "fields": {
+    "hospital_name": "ร้านยาเภสัชสุขใจ",
+    "patient_name": "พิมพ์ชนก ศรีสุข",
+    "date": "2024-03-22",
+    "items": [
+      {"description": "พาราเซตามอล ๕๐๐ มก. (เม็ด)", "quantity": 20, "unit_price": 1.5, "total": 30.0},
+      {"description": "อะม็อกซีซิลลิน ๕๐๐ มก. (แคปซูล)", "quantity": 21, "unit_price": 4.0, "total": 84.0},
+      {"description": "ยาน้ำแก้ไอ บรอมเฮกซีน ๖๐ มล.", "quantity": 1, "unit_price": 65.0, "total": 65.0},
+      {"description": "ผงเกลือแร่ โอ.อาร์.เอส. (ซอง)", "quantity": 5, "unit_price": 8.0, "total": 40.0}
+    ],
+    "grand_total": 219.0,
+    "payment_method": "เงินสด"
+  },
+  "notes": "ISSUER IS A PHARMACY (ร้านยา), not a hospital. hospital_name records the printed issuer name verbatim; the 'hospital' field is a best fit for a pharmacy receipt, so expect a possible mismatch in any hospital-name check. Thai numerals (๐-๙) are printed throughout: kept verbatim in text fields (item descriptions, name), while dates and amounts are normalized. Date 'วันที่ ๒๒ มี.ค. ๒๕๖๗' = 22 March 2567 (Buddhist era) -> 2024-03-22. Items sum: 30.00 + 84.00 + 65.00 + 40.00 = 219.00 = grand_total (๒๑๙.๐๐ บาท, words agree). Item 2 description wraps over two lines in print; joined here. Printed as VAT-inclusive; there is no VAT field. Time 18:05 and receipt number are not schema fields. The PDF text layer is garbled (duplicated Thai glyphs), so all values were taken from the rendered page, not the text layer."
+}

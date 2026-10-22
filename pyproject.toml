@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "medextract"
+version = "0.1.0"
+description = "Async medical document extraction pipeline using a vision-language model (Qwen3-VL)."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.6",
+    "pymupdf>=1.24",
+    "pillow>=10.0",
+    "python-dateutil>=2.9",
+    "json-repair>=0.30",
+    "rapidfuzz>=3.6",
+]
+
+[project.optional-dependencies]
+# Apple Silicon (Metal GPU) backend
+mlx = ["mlx-vlm>=0.3.5"]
+# NVIDIA GPU backend (4-bit via bitsandbytes)
+cuda = ["torch>=2.4", "transformers>=4.57", "accelerate>=1.0", "bitsandbytes>=0.44", "torchvision"]
+# CPU-only backend
+cpu = ["torch>=2.4", "transformers>=4.57", "accelerate>=1.0", "torchvision"]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff>=0.5"]
+
+[project.scripts]
+medextract = "medextract.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/medextract"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = ["slow: runs the real model (deselect with -m 'not slow')"]
+addopts = "-m 'not slow'"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
