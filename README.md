@@ -28,20 +28,83 @@ writeup is in [Prompt engineering approach](#prompt-engineering-approach), with 
 }
 ```
 
-## Install
-
-Requires **Python 3.10 or newer**. On macOS, the `python3` from Apple's Command Line Tools is 3.9 and will not work;
-use a Python from Homebrew, conda or python.org (check with `python3 --version`). Then pick the extra for your hardware:
+## Quick start
 
 ```bash
-python3.13 -m venv .venv                     # any python3.10+ works
-.venv/bin/python -m pip install --upgrade pip   # editable installs need pip >= 21.3
-.venv/bin/pip install -e ".[mlx,dev]"    # Apple Silicon (Metal GPU), recommended on Macs
-.venv/bin/pip install -e ".[cuda,dev]"   # NVIDIA GPU, 4-bit NF4 via bitsandbytes
-.venv/bin/pip install -e ".[cpu,dev]"    # CPU only (slow; the 8B model needs ~17 GB RAM in bf16)
+git clone https://github.com/ocsen-hoc-code/Papaya_AI_Challenge_08.git
+cd Papaya_AI_Challenge_08
+./setup.sh                                                     # one-time install, ~1 min
+.venv/bin/medextract run document-tests/01_receipt_en.pdf      # first run downloads the model (~5 GB)
 ```
 
-The `.venv/` folder is not committed (it is in `.gitignore`), so create it once after cloning. Tests for the
+`./setup.sh` handles everything:
+1. Finds a **Python 3.10 or newer** on the machine, even if the default `python3` is older (macOS ships 3.9).
+2. Picks the backend: **MLX** on Apple Silicon, **CUDA** if an NVIDIA GPU is present, otherwise **CPU**.
+3. Creates `.venv/`, upgrades pip and installs the package. A `.venv` built with an old Python is rebuilt.
+4. Checks the install and prints the commands to use next.
+
+Options: `./setup.sh cpu` (force a backend: `mlx` / `cuda` / `cpu`), `--check` (show what it would use, change
+nothing), `--recreate`, `--download-model` (fetch the weights now), `--no-test`, `--help`. `make help` lists
+shortcuts such as `make test` and `make run FILE=x.pdf`.
+
+The only prerequisite is a Python 3.10+ somewhere on the machine. If `./setup.sh` reports none, install one
+(`brew install python@3.12` on macOS, `sudo apt install python3.12 python3.12-venv` on Debian/Ubuntu, or
+python.org) and run it again.
+
+### Using conda (step by step)
+
+Use this if your default `python3` is too old (e.g. macOS's 3.9) or you manage Pythons with conda. Conda only
+provides the Python; `./setup.sh` still builds the project's own `.venv/`, so the run commands stay the same.
+
+1. **Check that conda is installed:** `conda --version`. If it is not:
+   - macOS: `brew install --cask miniforge`, or download Miniforge from https://github.com/conda-forge/miniforge
+   - then run `conda init zsh` (or `conda init bash`) and **open a new terminal**.
+2. **Create an environment with a recent Python:**
+   ```bash
+   conda create -n medextract python=3.12 -y
+   ```
+3. **Activate it.** The prompt changes from `(base)` to `(medextract)`:
+   ```bash
+   conda activate medextract
+   ```
+4. **Check the version.** It must say 3.10 or newer:
+   ```bash
+   python --version        # Python 3.12.x
+   ```
+5. **Install the project:**
+   ```bash
+   cd Papaya_AI_Challenge_08
+   ./setup.sh              # step 1/4 should show ".../envs/medextract/bin/python3 (Python 3.12.x)"
+   ```
+6. **Run it:**
+   ```bash
+   .venv/bin/medextract run document-tests/01_receipt_en.pdf
+   ```
+
+Next time, `cd` into the project and run the `.venv/bin/...` commands directly. `.venv` keeps its own copy of the
+Python, so `conda activate` is not needed again. To remove everything later, run `conda env remove -n medextract` and
+`rm -rf .venv`.
+
+### Manual install (Windows, or if you prefer)
+
+```bash
+python -m venv .venv                         # must be Python 3.10+; check with: python --version
+.venv/bin/python -m pip install --upgrade pip   # editable installs need pip >= 21.3
+.venv/bin/pip install -e ".[mlx,dev]"        # Apple Silicon | ".[cuda,dev]" NVIDIA GPU | ".[cpu,dev]" CPU only
+```
+On Windows use `.venv\Scripts\python` and `.venv\Scripts\pip` (the `mlx` extra is macOS-only).
+
+### Troubleshooting
+
+| Message | Cause | Fix |
+|---|---|---|
+| `File "setup.py" or "setup.cfg" not found ... editable mode` | pip older than 21.3 | `.venv/bin/python -m pip install --upgrade pip`, or just run `./setup.sh` |
+| `requires a different Python` / syntax errors on import | `.venv` was created with Python 3.9 | `./setup.sh --recreate` |
+| `no such file or directory: .venv/bin/medextract` | the install did not finish | run `./setup.sh` and read its last error |
+| `the mlx backend needs a Mac with Apple Silicon` | Intel Mac or Linux | `./setup.sh cpu` (or `cuda` with an NVIDIA GPU) |
+| Out of memory | the 8B model needs ~7 GB (MLX) / ~17 GB (CPU) of RAM | close other apps; run one `medextract` at a time; `--model Qwen/Qwen3-VL-2B-Instruct` for a smaller model |
+
+The `.venv/` folder is not committed (it is in `.gitignore`), so it is created once per clone. Tests for the
 Transformers backend are skipped unless `torch` is installed (the `[cpu]` or `[cuda]` extra).
 
 The model weights download from Hugging Face on first use: ~5 GB for MLX, ~17 GB for Transformers.

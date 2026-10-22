@@ -8,7 +8,7 @@ This repo holds a take-home challenge: **AI Challenge 08, Medical Document Extra
 
 ## Commands
 
-The venv is `.venv/` (not committed). Create it with Python 3.10+ (macOS system `python3` is 3.9 and fails): `python3.13 -m venv .venv && .venv/bin/python -m pip install -U pip && .venv/bin/pip install -e ".[mlx,dev]"`; use `[cuda,dev]` or `[cpu,dev]` off Apple Silicon.
+The venv is `.venv/` (not committed). Create it with `./setup.sh` (finds a Python 3.10+, detects MLX/CUDA/CPU, installs, runs the unit tests); `make help` lists shortcuts. macOS system `python3` is 3.9 and too old.
 
 ```bash
 .venv/bin/pytest -q                                    # unit tests (FakeBackend, no model, ~5 s)
