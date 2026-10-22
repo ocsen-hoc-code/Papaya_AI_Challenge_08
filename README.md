@@ -30,14 +30,19 @@ writeup is in [Prompt engineering approach](#prompt-engineering-approach), with 
 
 ## Install
 
-Python 3.10+. Pick the extra for your hardware:
+Requires **Python 3.10 or newer**. On macOS, the `python3` from Apple's Command Line Tools is 3.9 and will not work;
+use a Python from Homebrew, conda or python.org (check with `python3 --version`). Then pick the extra for your hardware:
 
 ```bash
-python3 -m venv .venv
+python3.13 -m venv .venv                     # any python3.10+ works
+.venv/bin/python -m pip install --upgrade pip   # editable installs need pip >= 21.3
 .venv/bin/pip install -e ".[mlx,dev]"    # Apple Silicon (Metal GPU), recommended on Macs
 .venv/bin/pip install -e ".[cuda,dev]"   # NVIDIA GPU, 4-bit NF4 via bitsandbytes
 .venv/bin/pip install -e ".[cpu,dev]"    # CPU only (slow; the 8B model needs ~17 GB RAM in bf16)
 ```
+
+The `.venv/` folder is not committed (it is in `.gitignore`), so create it once after cloning. Tests for the
+Transformers backend are skipped unless `torch` is installed (the `[cpu]` or `[cuda]` extra).
 
 The model weights download from Hugging Face on first use: ~5 GB for MLX, ~17 GB for Transformers.
 
