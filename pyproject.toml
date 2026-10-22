@@ -37,6 +37,13 @@ testpaths = ["tests"]
 asyncio_mode = "auto"
 markers = ["slow: runs the real model (deselect with -m 'not slow')"]
 addopts = "-m 'not slow'"
+# PyMuPDF's SWIG bindings trigger these on Python 3.12+ when imported. They are harmless and
+# come from the dependency, not from this code; every other DeprecationWarning still shows.
+filterwarnings = [
+    "ignore:builtin type SwigPyPacked has no __module__ attribute:DeprecationWarning",
+    "ignore:builtin type SwigPyObject has no __module__ attribute:DeprecationWarning",
+    "ignore:builtin type swigvarlink has no __module__ attribute:DeprecationWarning",
+]
 
 [tool.ruff]
 line-length = 120
