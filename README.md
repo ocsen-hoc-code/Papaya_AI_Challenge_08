@@ -8,6 +8,12 @@ the CPU, depending on what the machine has.
 Built for AI Challenge 08 (`AI_Challenge_08.md`). It handles receipts, discharge summaries, lab reports and prescriptions
 in **English, Vietnamese and Thai**.
 
+**Submission at a glance:** the 10 test documents are in [`document-tests/`](document-tests/) and their extraction
+results in [`results/`](results/) (scored in [`results/eval_report.md`](results/eval_report.md)). The prompt engineering
+writeup is in [Prompt engineering approach](#prompt-engineering-approach), with full detail in
+[`docs/PROMPTING.md`](docs/PROMPTING.md). See also [Results](#results-on-the-10-test-documents) and
+[Timeline](#timeline).
+
 ```json
 {
   "document_type": "receipt",
@@ -104,7 +110,7 @@ file ─► ingest ─────────► classify ─────► ex
 - **Meaningful confidence.** The score combines the model's own confidence, grounding against the text layer,
   normalization problems (invalid → ≤ 0.3, ambiguous date ×0.7) and token probabilities.
 
-See **[docs/PROMPTING.md](docs/PROMPTING.md)** for the prompt engineering approach.
+The prompts and why they look the way they do are covered in [Prompt engineering approach](#prompt-engineering-approach).
 
 ### Validation rules
 
@@ -123,6 +129,46 @@ Lab tests without a printed flag get one derived from the reference range, marke
 
 Numbers are returned as floats: amounts, quantities and lab results (`"7.8"` → `7.8`, Vietnamese `"5,6"` → `5.6`,
 Thai digits included). A lab result that is not a bare number (`"< 0.5"`, `"Positive"`) stays a string, as printed.
+
+## Prompt engineering approach
+
+A small local model (8B, 4-bit) is prone to inventing plausible values and to reporting uniformly high confidence. The
+approach is to **let the model transcribe and let code decide**: the prompts ask only for what is printed, and every
+conversion, check and score that code can do deterministically is done in code. The prompts live in
+[`src/medextract/extraction/prompts.py`](src/medextract/extraction/prompts.py).
+
+1. **Two calls per document.** First *classify*, using a 1024 px image. The model must return a score for each of the 4
+   types, not a single label: asked for a label, it echoed the printed title ("OFFICIAL RECEIPT"). Then *extract*
+   with a prompt for that type only, so fields from different types never mix.
+2. **One schema source.** The field list in each extraction prompt is generated from `FIELD_SPECS`, the same table that
+   drives normalization and validation, so prompts and code cannot drift apart.
+3. **Shared rules in the system prompt.**
+   - Report only what is visible. Anything not visible is `null`, with confidence ≤ 0.1.
+   - Copy text verbatim in its original script; never translate.
+   - Copy dates exactly as printed and do not convert Buddhist-era years. Do not compute or correct amounts.
+   - Never swap or "fix" values that look inconsistent, because validation catches those.
+   - Person names come with their title only, and a person field is filled only if that role is named.
+   - Every value comes with `evidence`: the verbatim snippet *including its printed label*.
+   - Confidence anchors from "clearly printed" to "not present", and an explicit "don't give every field the same score".
+4. **Text layer as a hint.** For born-digital PDFs, the embedded text is passed in, labelled "may be incomplete; the
+   image is the source of truth". It improves spelling of names and Thai/Vietnamese diacritics. Garbled text layers are
+   detected and dropped.
+5. **Code does the rest.**
+   - Normalization: ISO dates (Buddhist era −543, day-first for vi/th), number formats such as `1.500.000`, Thai digits.
+   - Grounding: every value is checked against the text layer; a value that can't be found is capped at 0.3 and flagged.
+   - Label checks: crossed admission/discharge dates are swapped back, and a director named as the physician is rejected.
+   - Computed confidence, plus validation of dates, amounts, totals and lab flags.
+6. **Robust output handling.** JSON is parsed leniently, with repair and a single retry that includes the error.
+7. **Iterated on evidence, not on the test files.** Each of the 3 runs was scored against hand-labelled ground truth,
+   and every fix is a general rule. No prompt contains anything from `document-tests/`, and a unit test enforces that.
+
+| Run | Field accuracy | Hallucinated fields | Validation errors caught | Change |
+|---|---|---|---|---|
+| 1 | 89.7% | 1 | 1/2 | baseline |
+| 2 | 93.1% | 1 | 1/2 | no-swap and role rules; names without degrees; evidence includes the label |
+| 3 | **98.3%** | **0** | **2/2** | label checks in code (`postprocessing/roles.py`) |
+
+Full write-up, including what was deliberately not done: [`docs/PROMPTING.md`](docs/PROMPTING.md).
 
 ## Project layout
 
